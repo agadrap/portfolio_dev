@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>byaga.dev — Aga Drapinska-Tonge</title>
+<meta name="description" content="Aga Drapinska-Tonge — data analytics engineer, developer, and film reviewer. Building things across data, code, and cinema.">
+<meta name="author" content="Aga Drapinska-Tonge">
+<meta name="theme-color" content="#040806">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="byaga.dev — Aga Drapinska-Tonge">
+<meta property="og:description" content="Data analytics engineer, developer, and film reviewer. Building things across data, code, and cinema.">
+<meta property="og:url" content="https://byaga.dev">
+<meta property="og:site_name" content="byaga.dev">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="byaga.dev — Aga Drapinska-Tonge">
+<meta name="twitter:description" content="Data analytics engineer, developer, and film reviewer. Building things across data, code, and cinema.">
+<meta name="twitter:creator" content="@dr_agniieszka">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* === RESET & BASE === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .site { width: 100%; max-width: 700px; }
+
+  /* === PALETTE === */
+  .g { color: #4af2a1; } .dim { color: #3a6b52; } .w { color: #d4d4c8; } .sec { color: #7a8a80; }
+  .err { color: #a87d6f; } .warn { color: #9a8f6a; } .note { color: #6a7a8a; }
+
+  /* === SHARED === */
+  .cursor { display: inline-block; width: 9px; height: 16px; background: #4af2a1; vertical-align: middle; animation: blink 1.1s step-end infinite; margin-left: 1px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .divider { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+
+  /* === NAV === */
+  .nav-item {
+    color: #3a6b52; font-size: 12px; letter-spacing: 0.08em;
+    cursor: pointer; transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+    background: none; border: none; padding: 0;
+  }
+  .nav-item:hover, .nav-item:focus-visible, .nav-item.active { color: #4af2a1; }
+  .nav-item:focus-visible { outline: 1px solid #4af2a1; outline-offset: 4px; border-radius: 2px; }
+  a.nav-item { text-decoration: none; }
+
+  /* === CARDS === */
+  .card {
+    border: 0.5px solid #1e3d2a; padding: 20px; border-radius: 4px;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .card:hover { border-color: #4af2a1; background: #0d1f15; transform: translateY(-1px); }
+  .card.featured { border-color: #2a5a3a; }
+
+  /* === TAGS & BADGES === */
+  .tag {
+    font-size: 10px; border: 0.5px solid #1e3d2a; color: #3a6b52;
+    padding: 2px 8px; border-radius: 2px;
+    display: inline-block; margin: 2px 2px 2px 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 2px;
+    display: inline-block; margin-bottom: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .badge-active { background: #0d2a1a; color: #4af2a1; border: 0.5px solid #2a5a3a; }
+  .badge-soon { background: #111; color: #3a6b52; border: 0.5px solid #1e3d2a; }
+
+  /* === PAGES === */
+  .page { display: none; opacity: 0; transition: opacity 0.35s ease; }
+  .page.active { display: block; opacity: 1; }
+
+  .link-arrow {
+    font-size: 11px; color: #4af2a1; opacity: 0.7;
+    margin-top: 12px; display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .link-arrow:hover { opacity: 1; }
+
+  /* === ROW ITEMS === */
+  .row-item {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0; border-bottom: 0.5px solid #111c15;
+    cursor: default; transition: color 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .row-item:last-child { border-bottom: none; }
+  .row-item:hover .w { color: #4af2a1; }
+
+  /* === BOOT === */
+  #boot {
+    background: #080f0b; padding: 32px 28px; border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 260px; display: flex; flex-direction: column; justify-content: center;
+  }
+  #boot-lines { font-size: 13px; line-height: 2.1; }
+  .boot-line { display: block; min-height: 26px; }
+
+  /* === ALERT === */
+  #alert-wrap {
+    background: #080f0b; padding: 32px 28px; border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    display: none; opacity: 0; transition: opacity 0.5s ease;
+  }
+  #alert-box { border: 0.5px solid #2a3a30; border-radius: 4px; overflow: hidden; }
+  .alert-header {
+    background: #0d1a12; padding: 10px 16px;
+    border-bottom: 0.5px solid #1a2e22;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .alert-body { padding: 20px 16px; }
+  .alert-row {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 7px 0; border-bottom: 0.5px solid #0f1f14;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .alert-row:last-child { border-bottom: none; }
+  .alert-prefix { font-size: 10px; letter-spacing: 0.08em; min-width: 52px; flex-shrink: 0; }
+  .alert-footer {
+    padding: 14px 16px; border-top: 0.5px solid #1a2e22;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .enter-btn {
+    background: transparent; border: 0.5px solid #3a6b52; color: #4af2a1;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 20px; border-radius: 3px; cursor: pointer;
+    letter-spacing: 0.08em; transition: background 0.2s, border-color 0.2s;
+  }
+  .enter-btn:hover, .enter-btn:focus-visible { background: #0d2a1a; border-color: #4af2a1; }
+  .enter-btn:focus-visible { outline: 1px solid #4af2a1; outline-offset: 2px; }
+
+  /* === MAIN === */
+  #main {
+    background: #080f0b; border-radius: 8px;
+    display: none; opacity: 0; transition: opacity 0.6s ease;
+    font-family: 'JetBrains Mono', monospace; overflow: hidden;
+  }
+  #main-nav { padding: 28px 28px 0; }
+  #main-body { padding: 0 28px 28px; }
+
+  /* === HERO === */
+  #hero-wrap { position: relative; overflow: hidden; height: 200px; }
+  #scroll-bg {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    line-height: 1.8; color: #0d2a1a; padding: 12px 28px;
+    white-space: pre-wrap; word-break: break-all;
+    animation: scrollup 22s linear infinite; pointer-events: none;
+  }
+  @keyframes scrollup { from{transform:translateY(0)} to{transform:translateY(-50%)} }
+  #hero-content {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 28px;
+    background: linear-gradient(to bottom, #080f0b 5%, transparent 28%, transparent 72%, #080f0b 95%);
+  }
+
+  /* === EXPANDABLE PROJECTS === */
+  .expandable-project { border-bottom: 0.5px solid #111c15; }
+  .expandable-project:last-child { border-bottom: none; }
+  .expandable-project .row-item { border-bottom: none; }
+  .expandable-project.open .expand-icon { color: #4af2a1; }
+  .expandable-project.open .row-item .w { color: #4af2a1; }
+
+  /* === EASTER EGG === */
+  #easter-trigger { cursor: pointer; opacity: 0.15; transition: opacity 0.3s; }
+  #easter-trigger:hover { opacity: 1; }
+
+  /* === SKILLS GRID === */
+  .skills-grid {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
+  }
+  .skill-tag {
+    font-size: 10px; border: 0.5px solid #1e3d2a; color: #3a6b52;
+    padding: 3px 10px; border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .skill-tag:hover { color: #4af2a1; border-color: #4af2a1; }
+
+  /* === CONTACT ROW === */
+  .contact-row {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .contact-label { font-size: 11px; color: #3a6b52; min-width: 60px; }
+  .contact-value { font-size: 12px; color: #d4d4c8; text-decoration: none; transition: color 0.2s; }
+  .contact-value:hover { color: #4af2a1; }
+
+  /* === GAME === */
+  #game-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4,8,6,0.97); z-index: 100;
+    flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  #game-overlay.open { display: flex; }
+  #game-canvas { border: 0.5px solid #2a5a3a; border-radius: 4px; display: block; max-width: 100%; }
+  #game-ui {
+    color: #7a8a80; font-size: 11px; margin-top: 12px;
+    display: flex; gap: 24px; align-items: center;
+  }
+  #game-score { color: #4af2a1; }
+  #game-close { color: #3a6b52; cursor: pointer; transition: color 0.2s; }
+  #game-close:hover { color: #4af2a1; }
+  #game-msg {
+    color: #4af2a1; font-size: 13px; margin-top: 10px;
+    min-height: 20px; text-align: center;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+    #boot { padding: 24px 18px; min-height: 200px; }
+    #boot-lines { font-size: 12px; line-height: 1.9; }
+    #alert-wrap { padding: 20px 14px; }
+    .alert-header { padding: 10px 12px; }
+    .alert-body { padding: 14px 12px; }
+    .alert-row { flex-direction: column; gap: 4px; }
+    .alert-footer { padding: 12px; flex-direction: column; gap: 10px; align-items: stretch; }
+    .alert-footer .enter-btn { width: 100%; text-align: center; }
+    #main-nav {
+      padding: 20px 18px 0;
+      flex-direction: column !important; gap: 12px; align-items: flex-start !important;
+    }
+    #main-body { padding: 0 18px 24px; }
+    #hero-wrap { height: 160px; }
+    #hero-content { padding: 0 18px; }
+    #hero-content p:nth-child(2) { font-size: 18px !important; }
+    .landing-grid { grid-template-columns: 1fr !important; }
+    .social-bar { flex-direction: column; align-items: flex-start !important; gap: 10px !important; }
+    .social-links { flex-wrap: wrap; }
+    .row-item { flex-direction: column; gap: 6px; align-items: flex-start !important; }
+    #game-canvas { width: 100%; height: auto; }
+    .about-links { gap: 12px !important; }
+    .skills-grid { gap: 4px; }
+  }
+
+  @media (max-width: 400px) {
+    #hero-content p:nth-child(2) { font-size: 16px !important; }
+    #hero-content p:nth-child(3) { font-size: 11px !important; }
+  }
+
+  /* === SKIP LINK (a11y) === */
+  .skip-link {
+    position: absolute; left: -9999px; top: auto;
+    background: #4af2a1; color: #040806; padding: 8px 16px;
+    font-size: 12px; font-family: 'JetBrains Mono', monospace;
+    z-index: 200; border-radius: 0 0 4px 0;
+    text-decoration: none;
+  }
+  .skip-link:focus { left: 0; top: 0; }
+
+  /* === REDUCE MOTION === */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    #scroll-bg { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip to content for keyboard users -->
+<a href="#main-body" class="skip-link">Skip to content</a>
+
+<div class="site" role="main">
+
+  <!-- BOOT -->
+  <div id="boot" aria-live="polite"><div id="boot-lines"></div></div>
+
+  <!-- ALERT -->
+  <div id="alert-wrap" role="dialog" aria-label="System diagnostics">
+    <div id="alert-box">
+      <div class="alert-header">
+        <span class="dim" style="font-size:11px; letter-spacing:0.1em;">SYSTEM DIAGNOSTICS — byaga.dev</span>
+        <span class="sec" style="font-size:11px; margin-left:auto;">3 issues found</span>
+      </div>
+      <div class="alert-body">
+        <div class="alert-row"><span class="alert-prefix warn">WARNING</span><span class="w" style="font-size:13px;">curiosity levels critically high — no fix available</span></div>
+        <div class="alert-row"><span class="alert-prefix err">ERROR</span><span class="w" style="font-size:13px;">could not locate <span class="dim">work/life_balance</span> — proceeding anyway</span></div>
+        <div class="alert-row"><span class="alert-prefix note">NOTE</span><span class="w" style="font-size:13px;">secret project detected at <span class="dim">???/</span> — access denied</span></div>
+      </div>
+      <div class="alert-footer">
+        <span class="sec" style="font-size:11px;">acknowledge and continue?</span>
+        <button class="enter-btn" onclick="enterSite()" aria-label="Enter the site">enter anyway →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+    <nav id="main-nav" style="display:flex; justify-content:space-between; align-items:center;" aria-label="Main navigation">
+      <div style="cursor:pointer;" onclick="showPage('landing')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('landing')" aria-label="Go to home page">
+        <span class="g" style="font-size:13px; font-weight:500;">~/byaga.dev</span>
+        <span class="dim" style="font-size:12px; margin-left:8px;" id="breadcrumb" aria-live="polite"></span>
+      </div>
+      <div style="display:flex; gap:20px;">
+        <button class="nav-item" id="nav-projects" onclick="showPage('projects')" aria-label="View projects page">projects</button>
+        <button class="nav-item" id="nav-film" onclick="showPage('film')" aria-label="View film page">film</button>
+        <button class="nav-item" id="nav-about" onclick="showPage('about')" aria-label="View about page">about</button>
+      </div>
+    </nav>
+
+    <div id="main-body">
+      <!-- LANDING -->
+      <section class="page active" id="page-landing" aria-label="Home">
+        <div id="hero-wrap">
+          <div id="scroll-bg" aria-hidden="true"></div>
+          <div id="hero-content">
+            <p class="dim" style="font-size:12px; margin-bottom:8px;" aria-hidden="true">$ whoami</p>
+            <h1 class="w" style="font-size:22px; font-weight:300; letter-spacing:-0.02em;">Aga Drapinska-Tonge</h1>
+            <p class="sec" style="font-size:13px; margin-top:6px;">data analytics engineer · developer · film reviewer</p>
+          </div>
+        </div>
+        <hr class="divider">
+        <p class="dim" style="font-size:11px; margin-bottom:20px; letter-spacing:0.1em;" aria-hidden="true">$ ls</p>
+        <div class="landing-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="row-item" style="border-bottom:0.5px solid #111c15; cursor:pointer;" onclick="showPage('projects')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('projects')">
+            <span class="w" style="font-size:13px;">projects/</span><span class="sec" style="font-size:11px;">things I've built</span>
+          </div>
+          <div class="row-item" style="border-bottom:0.5px solid #111c15; cursor:pointer;" onclick="showPage('film')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('film')">
+            <span class="w" style="font-size:13px;">film/</span><span class="sec" style="font-size:11px;">reviews &amp; ratings</span>
+          </div>
+          <div class="row-item" style="cursor:pointer;" onclick="showPage('about')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('about')">
+            <span class="w" style="font-size:13px;">about/</span><span class="sec" style="font-size:11px;">who I am</span>
+          </div>
+          <div class="row-item" style="cursor:default;">
+            <span class="w" style="font-size:13px;" id="easter-trigger" onclick="openGame()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openGame()">???/</span>
+            <span class="sec" style="font-size:11px; opacity:0.4;">something's coming</span>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="social-bar" style="display:flex; justify-content:space-between; align-items:center;">
+          <p class="dim" style="font-size:11px; letter-spacing:0.1em;" aria-hidden="true">$ find me elsewhere</p>
+          <div class="social-links" style="display:flex; gap:16px;">
+            <a href="https://github.com/agadrapin" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">github</a>
+            <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">linkedin</a>
+            <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">x.com</a>
+            <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">instagram</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="page" id="page-projects" aria-label="Projects">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-active">active</span>
+          <div class="card featured">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
+            <div><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
+            <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-soon">coming soon</span>
+          <div class="card" style="opacity:0.6;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">something's coming</h2>
+            <p class="w" style="font-size:13px; font-weight:300; line-height:1.6;">Not ready to talk about it yet.</p>
+          </div>
+        </div>
+        <hr class="divider">
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;">// smaller projects</p>
+        <div>
+          <div class="expandable-project" onclick="toggleProject(this)">
+            <div class="row-item" style="cursor:pointer;">
+              <div><span class="w" style="font-size:13px; font-weight:300;">life-in-uk-test</span><span class="sec" style="font-size:11px; margin-left:12px;">web app</span></div>
+              <div style="display:flex; gap:6px; align-items:center;"><span class="tag">finalized</span><span class="dim expand-icon" style="font-size:11px; transition:transform 0.2s;">+</span></div>
+            </div>
+            <div class="project-detail" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <p class="sec" style="font-size:12px; line-height:1.7; padding:4px 0 14px;">Interactive revision tool for the Life in the UK citizenship test — multiple choice questions, monarch family tree, history timeline, notable Britons, and UK law diagrams. Built as a single HTML file.</p>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; padding-bottom:10px;">
+                <span class="tag">html</span><span class="tag">javascript</span><span class="tag">offline</span>
+                <a href="https://github.com/agadrapin/life-in-uk-test" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px; margin-left:auto;">github →</a>
+              </div>
+            </div>
+          </div>
+          <div class="expandable-project" onclick="toggleProject(this)">
+            <div class="row-item" style="cursor:pointer;">
+              <div><span class="w" style="font-size:13px; font-weight:300;">calisthenics-90-day-tracker</span><span class="sec" style="font-size:11px; margin-left:12px;">web app</span></div>
+              <div style="display:flex; gap:6px; align-items:center;"><span class="tag">finalized</span><span class="dim expand-icon" style="font-size:11px; transition:transform 0.2s;">+</span></div>
+            </div>
+            <div class="project-detail" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <p class="sec" style="font-size:12px; line-height:1.7; padding:4px 0 14px;">A beautiful, offline-first 90-day calisthenics training tracker with progress monitoring, workout logging, and personalized nutrition targets.</p>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; padding-bottom:10px;">
+                <span class="tag">html</span><span class="tag">javascript</span><span class="tag">offline</span>
+                <a href="https://github.com/agadrapin/calisthenics-90-day-tracker" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px; margin-left:auto;">github →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILM -->
+      <section class="page" id="page-film" aria-label="Film reviews">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls film/</p>
+        <p class="sec" style="font-size:11px; margin-bottom:16px;">top 10 from <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" style="color:#4af2a1; text-decoration:none;">bayley film club</a> &nbsp;·&nbsp; A·Anticipation &nbsp; E·Enjoyment &nbsp; R·Retrospect</p>
+        <div id="film-rankings">
+          <p class="dim" style="font-size:12px; padding:20px 0;">loading rankings...</p>
+        </div>
+        <a href="https://bayleyfilmclub.com/rankings/films/" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:20px;">full rankings at bayleyfilmclub.com →</a>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="page" id="page-about" aria-label="About">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ cat about.md</p>
+        <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+          <img id="about-photo" src="photo.jpg" alt="Aga Drapinska-Tonge" style="width:120px; height:120px; border-radius:4px; border:0.5px solid #1e3d2a; object-fit:cover; object-position:center 20%; flex-shrink:0;">
+          <div class="w" style="font-size:13px; font-weight:300; line-height:1.9; max-width:520px; flex:1; min-width:240px;">
+            <p>I'm Aga — a data analytics engineer and developer based in England.</p>
+            <br>
+            <p>I make things across different worlds: data pipelines, web apps, film reviews, and a project I'm not ready to talk about yet.</p>
+            <br>
+            <p>Curiosity is the thread that ties it all together.</p>
+          </div>
+        </div>
+
+        <hr class="divider">
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">// tools I work with</p>
+        <div class="skills-grid">
+          <span class="skill-tag">sql</span>
+          <span class="skill-tag">dbt</span>
+          <span class="skill-tag">bigquery</span>
+          <span class="skill-tag">html/css</span>
+          <span class="skill-tag">git</span>
+          <span class="skill-tag">data pipelines</span>
+          <span class="skill-tag">python</span>
+        </div>
+
+        <hr class="divider">
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">$ find me elsewhere</p>
+        <div class="about-links" style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="https://github.com/agadrapin" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">github →</a>
+          <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">linkedin →</a>
+          <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">x.com →</a>
+          <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">instagram →</a>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- GAME OVERLAY -->
+  <div id="game-overlay" role="dialog" aria-label="Breakout game">
+    <div style="color:#3a6b52; font-size:11px; letter-spacing:0.1em; margin-bottom:12px;">// secret unlocked — breakout.exe</div>
+    <canvas id="game-canvas" width="400" height="300" aria-label="Breakout game canvas"></canvas>
+    <div id="game-ui">
+      <span>score: <span id="game-score">0</span></span>
+      <span>lives: <span id="game-lives">3</span></span>
+      <span id="game-close" onclick="closeGame()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key==='Escape')closeGame()">esc — exit</span>
+    </div>
+    <div id="game-msg">move mouse to control paddle · click to start</div>
+  </div>
+
+</div>
+
+<script>
+/* === SCROLL BG SPEED === */
+var scrollSpeed = 22;
+document.addEventListener('mousemove', function(e) {
+  var pct = e.clientY / window.innerHeight;
+  scrollSpeed = 8 + pct * 40;
+  var bg = document.getElementById('scroll-bg');
+  if (bg) bg.style.animationDuration = scrollSpeed + 's';
+});
+
+/* === PAGE NAV WITH TRANSITIONS === */
+function showPage(name) {
+  var current = document.querySelector('.page.active');
+  if (current) {
+    current.style.opacity = '0';
+    setTimeout(function() {
+      current.classList.remove('active');
+      current.style.opacity = '';
+      activatePage(name);
+    }, 200);
+  } else {
+    activatePage(name);
+  }
+}
+
+function activatePage(name) {
+  var page = document.getElementById('page-' + name);
+  page.style.opacity = '0';
+  page.classList.add('active');
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      page.style.opacity = '1';
+    });
+  });
+  document.querySelectorAll('#main-nav .nav-item').forEach(function(n) { n.classList.remove('active'); });
+  var nav = document.getElementById('nav-' + name);
+  if (nav) nav.classList.add('active');
+  document.getElementById('breadcrumb').textContent = name === 'landing' ? '' : name + '/';
+}
+
+/* === EXPANDABLE PROJECTS === */
+function toggleProject(el) {
+  if (el.classList.contains('open')) {
+    el.classList.remove('open');
+    var detail = el.querySelector('.project-detail');
+    detail.style.maxHeight = '0';
+    detail.style.opacity = '0';
+    el.querySelector('.expand-icon').textContent = '+';
+  } else {
+    el.classList.add('open');
+    var detail = el.querySelector('.project-detail');
+    detail.style.maxHeight = detail.scrollHeight + 'px';
+    detail.style.opacity = '1';
+    el.querySelector('.expand-icon').textContent = '−';
+  }
+}
+
+/* === ENTER SITE === */
+function enterSite() {
+  var aw = document.getElementById('alert-wrap');
+  aw.style.opacity = '0';
+  setTimeout(function() {
+    aw.style.display = 'none';
+    var main = document.getElementById('main');
+    main.style.display = 'block';
+    setTimeout(function() { main.style.opacity = '1'; }, 30);
+  }, 500);
+}
+
+/* === CODE LINES FOR SCROLL BG === */
+var codeLines = [
+  "SELECT curiosity, creativity, craft FROM byaga.dev WHERE discipline IN ('data','film','code');",
+  "def make_things(worlds=['analytics','dev','film']): return [build(w) for w in worlds]",
+  "git commit -m 'another project, another world explored'",
+  "SELECT title, rating FROM bayley_film_club ORDER BY retrospect DESC;",
+  "npm run build && echo 'shipped'",
+  "const aga = { role: 'engineer', also: ['developer','reviewer','creator'] };",
+  "dbt run --select curiosity_model --target prod",
+  "python analyse.py --input pipeline.csv --output insight.json",
+  "git push origin main && open bayleyfilmclub.com",
+  "SELECT * FROM projects WHERE status = 'shipping_soon';",
+  "grep -r 'interesting' ./life | wc -l",
+  "while curious: keep_building()",
+];
+var full = '';
+for (var r = 0; r < 6; r++) { full += codeLines.join('\n') + '\n'; }
+document.getElementById('scroll-bg').textContent = full;
+
+/* === BOOT SEQUENCE === */
+var bootEl = document.getElementById('boot-lines');
+function addBootLine(html, delay, cb) {
+  setTimeout(function() {
+    var s = document.createElement('span'); s.className = 'boot-line'; s.innerHTML = html;
+    bootEl.appendChild(s); if (cb) cb();
+  }, delay);
+}
+function typeInto(el, text, speed, cb) {
+  var i = 0;
+  var iv = setInterval(function() {
+    el.innerHTML += text.charAt(i); i++;
+    if (i >= text.length) { clearInterval(iv); if (cb) setTimeout(cb, 150); }
+  }, speed);
+}
+function showAlert() {
+  var boot = document.getElementById('boot');
+  boot.style.transition = 'opacity 0.4s ease'; boot.style.opacity = '0';
+  setTimeout(function() {
+    boot.style.display = 'none';
+    var aw = document.getElementById('alert-wrap'); aw.style.display = 'block';
+    setTimeout(function() {
+      aw.style.opacity = '1';
+      document.querySelector('.enter-btn').focus();
+    }, 30);
+  }, 400);
+}
+var t = 0;
+addBootLine('<span class="dim">byaga.dev — boot sequence initiated</span>', t+=0);
+addBootLine('<span class="dim">checking dependencies...</span>', t+=600);
+addBootLine('<span class="dim">loading modules: analytics... dev... film...</span>', t+=700);
+addBootLine('<span class="dim">running diagnostics...</span>', t+=700);
+setTimeout(function() {
+  var last = document.createElement('span'); last.className = 'boot-line'; bootEl.appendChild(last);
+  typeInto(last, '3 issues found. review before continuing.', 35, function() { setTimeout(showAlert, 500); });
+}, t+=600);
+
+/* === BREAKOUT GAME === */
+var gameRunning = false, gameStarted = false, animId = null;
+var W = 400, H = 300, ball, paddle, blocks, score, lives;
+var blockLabels = ['SELECT','dbt','git','npm','def','const','while','grep','import','return','true','null'];
+
+function openGame() {
+  document.getElementById('game-overlay').classList.add('open');
+  initGame();
+}
+function closeGame() {
+  document.getElementById('game-overlay').classList.remove('open');
+  gameRunning = false; gameStarted = false;
+  if (animId) cancelAnimationFrame(animId);
+}
+function initGame() {
+  score = 0; lives = 3; gameStarted = false; gameRunning = false;
+  if (animId) cancelAnimationFrame(animId);
+  ball = { x: W/2, y: H-50, dx: 2.5, dy: -2.5, r: 5 };
+  paddle = { x: W/2-35, y: H-18, w: 70, h: 8 };
+  blocks = [];
+  var cols = 7, rows = 4, bw = 46, bh = 16, gap = 4;
+  var startX = (W - (cols*(bw+gap)-gap)) / 2;
+  for (var r = 0; r < rows; r++) {
+    for (var c = 0; c < cols; c++) {
+      blocks.push({ x: startX+c*(bw+gap), y: 28+r*(bh+gap), w: bw, h: bh, alive: true,
+        label: blockLabels[(r*cols+c) % blockLabels.length],
+        color: ['#1a3d28','#162e1e','#1e4a30','#133022'][r%4] });
+    }
+  }
+  document.getElementById('game-score').textContent = 0;
+  document.getElementById('game-lives').textContent = 3;
+  document.getElementById('game-msg').textContent = 'move mouse to control paddle \u00b7 click to start';
+  drawGame();
+}
+
+var canvas = document.getElementById('game-canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', function(e) {
+  var rect = canvas.getBoundingClientRect();
+  paddle.x = Math.max(0, Math.min(W-paddle.w, e.clientX-rect.left-paddle.w/2));
+  if (!gameStarted) drawGame();
+});
+canvas.addEventListener('click', function() {
+  if (!gameStarted) { gameStarted = true; gameRunning = true; loop(); }
+  else if (!gameRunning) { initGame(); }
+});
+
+/* ESC to close game */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('game-overlay').classList.contains('open')) {
+    closeGame();
+  }
+});
+
+function drawGame() {
+  ctx.fillStyle = '#080f0b'; ctx.fillRect(0,0,W,H);
+  blocks.forEach(function(b) {
+    if (!b.alive) return;
+    ctx.fillStyle = b.color; ctx.fillRect(b.x,b.y,b.w,b.h);
+    ctx.strokeStyle = '#2a5a3a'; ctx.lineWidth = 0.5; ctx.strokeRect(b.x,b.y,b.w,b.h);
+    ctx.fillStyle = '#4af2a1'; ctx.font = '8px JetBrains Mono'; ctx.textAlign = 'center';
+    ctx.fillText(b.label, b.x+b.w/2, b.y+b.h/2+3);
+  });
+  ctx.fillStyle = '#2a5a3a'; ctx.fillRect(paddle.x,paddle.y,paddle.w,paddle.h);
+  ctx.strokeStyle = '#4af2a1'; ctx.lineWidth = 0.5; ctx.strokeRect(paddle.x,paddle.y,paddle.w,paddle.h);
+  ctx.beginPath(); ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+  ctx.fillStyle = '#4af2a1'; ctx.fill();
+}
+
+function loop() {
+  if (!gameRunning) return;
+  ball.x += ball.dx; ball.y += ball.dy;
+  if (ball.x-ball.r<=0 || ball.x+ball.r>=W) ball.dx*=-1;
+  if (ball.y-ball.r<=0) ball.dy*=-1;
+  if (ball.y+ball.r>=paddle.y && ball.y+ball.r<=paddle.y+paddle.h+4 &&
+      ball.x>=paddle.x-4 && ball.x<=paddle.x+paddle.w+4) {
+    ball.dy=-Math.abs(ball.dy);
+    ball.dx=(ball.x-(paddle.x+paddle.w/2))/(paddle.w/2)*4;
+  }
+  blocks.forEach(function(b) {
+    if (!b.alive) return;
+    if (ball.x+ball.r>b.x&&ball.x-ball.r<b.x+b.w&&ball.y+ball.r>b.y&&ball.y-ball.r<b.y+b.h) {
+      b.alive=false; ball.dy*=-1; score++;
+      document.getElementById('game-score').textContent=score;
+    }
+  });
+  if (ball.y+ball.r>H) {
+    lives--; document.getElementById('game-lives').textContent=lives;
+    if (lives<=0) {
+      gameRunning=false; gameStarted=false;
+      document.getElementById('game-msg').textContent='game over \u2014 score: '+score+' \u00b7 click to retry';
+      drawGame(); return;
+    }
+    ball.x=W/2; ball.y=H-50; ball.dx=2.5; ball.dy=-2.5; gameStarted=false;
+    document.getElementById('game-msg').textContent='click to continue \u2014 lives: '+lives;
+    drawGame(); return;
+  }
+  if (blocks.every(function(b){return !b.alive;})) {
+    gameRunning=false; gameStarted=false;
+    document.getElementById('game-msg').textContent='you cleared it! score: '+score+' \u00b7 click to play again';
+    drawGame(); return;
+  }
+  drawGame();
+  animId=requestAnimationFrame(loop);
+}
+
+/* === AUTO-FETCH FILM RANKINGS FROM BAYLEY FILM CLUB === */
+(function() {
+  var container = document.getElementById('film-rankings');
+
+  /* Fallback data in case fetch fails */
+  var fallbackFilms = [
+    { rank: 1, title: 'Dancer in the Dark', director: 'Lars von Trier', a: 5, e: 5, r: 5, total: 15 },
+    { rank: 2, title: 'The Pianist', director: 'Roman Polański', a: 4, e: 4, r: 5, total: 13 },
+    { rank: 3, title: 'There Will Be Blood', director: 'Paul Thomas Anderson', a: 4, e: 5, r: 4, total: 13 },
+    { rank: 4, title: 'Knife in the Water', director: 'Roman Polański', a: 5, e: 5, r: 3, total: 13 },
+    { rank: 5, title: 'Mother', director: 'Bong Joon-ho', a: 4, e: 4, r: 4, total: 12 },
+    { rank: 6, title: 'Tape', director: 'Richard Linklater', a: 3, e: 5, r: 4, total: 12 },
+    { rank: 7, title: 'Breaking the Waves', director: 'Lars von Trier', a: 2, e: 4, r: 5, total: 11 },
+    { rank: 8, title: 'Memories of Murder', director: 'Bong Joon-ho', a: 4, e: 4, r: 3, total: 11 },
+    { rank: 9, title: 'No Country for Old Men', director: 'Joel & Ethan Coen', a: 2, e: 4, r: 4, total: 10 },
+    { rank: 10, title: 'Phantom Thread', director: 'Paul Thomas Anderson', a: 3, e: 3, r: 4, total: 10 }
+  ];
+
+  function renderFilms(films) {
+    var html = '';
+    films.forEach(function(f, i) {
+      html += '<div class="row-item">'
+        + '<div style="display:flex; align-items:baseline; gap:10px; min-width:0;">'
+        + '<span class="dim" style="font-size:11px; min-width:18px;">' + f.rank + '</span>'
+        + '<div style="min-width:0;">'
+        + '<span class="w" style="font-size:13px; font-weight:300;">' + f.title + '</span>'
+        + '<span class="sec" style="font-size:11px; margin-left:8px;">' + f.director + '</span>'
+        + '</div>'
+        + '</div>'
+        + '<span class="sec" style="font-size:11px; white-space:nowrap; margin-left:12px;">'
+        + 'A\u00b7' + f.a + ' E\u00b7' + f.e + ' R\u00b7' + f.r
+        + ' &nbsp;<span class="g">' + f.total + '/15</span></span>'
+        + '</div>';
+    });
+    container.innerHTML = html;
+  }
+
+  /* Try to fetch live data from bayleyfilmclub.com */
+  fetch('https://bayleyfilmclub.com/rankings/films/')
+    .then(function(res) { return res.text(); })
+    .then(function(html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var rows = doc.querySelectorAll('.leaderboard-row');
+      if (!rows.length) throw new Error('No rows found');
+
+      var films = [];
+      rows.forEach(function(row, i) {
+        if (i >= 10) return;
+        var titleEl = row.querySelector('.film-title, h3, .title');
+        var directorEl = row.querySelector('.director-name, .director, .subtitle');
+        var scoreEls = row.querySelectorAll('.score-value, .rating-value');
+
+        /* Try to extract text content by structure */
+        var allText = row.textContent;
+
+        /* Parse the structured data from the row */
+        var rankNum = row.querySelector('.rank-num');
+        var rank = rankNum ? parseInt(rankNum.textContent) : (i + 1);
+
+        /* Find title - usually the largest/boldest text */
+        var title = '';
+        var director = '';
+        var a = 0, e = 0, r = 0, total = 0;
+
+        /* Try specific selectors first */
+        if (titleEl) title = titleEl.textContent.trim();
+        if (directorEl) director = directorEl.textContent.trim();
+
+        /* Parse A/E/R scores from text */
+        var scoreMatch = allText.match(/A:\s*(\d+)\s*E:\s*(\d+)\s*R:\s*(\d+)/);
+        if (scoreMatch) {
+          a = parseInt(scoreMatch[1]);
+          e = parseInt(scoreMatch[2]);
+          r = parseInt(scoreMatch[3]);
+          total = a + e + r;
+        }
+
+        /* Fallback: try to get total score */
+        if (!total) {
+          var totalMatch = allText.match(/(\d+)\s*\/\s*15/);
+          if (totalMatch) total = parseInt(totalMatch[1]);
+        }
+
+        if (title || director) {
+          films.push({ rank: rank, title: title, director: director, a: a, e: e, r: r, total: total });
+        }
+      });
+
+      if (films.length > 0) {
+        renderFilms(films);
+      } else {
+        renderFilms(fallbackFilms);
+      }
+    })
+    .catch(function() {
+      /* If fetch fails (CORS, network, etc.), use fallback */
+      renderFilms(fallbackFilms);
+    });
+})();
+</script>
+</body>
+</html>
