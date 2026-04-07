@@ -64,6 +64,23 @@
   .nav-item:focus-visible { outline: 1px solid #4af2a1; outline-offset: 4px; border-radius: 2px; }
   a.nav-item { text-decoration: none; }
 
+  /* === NAV DROPDOWN === */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #0a1610; border: 0.5px solid #1e3d2a; border-radius: 3px;
+    padding: 6px 0; margin-top: 8px; min-width: 140px; z-index: 50;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: block; }
+  .nav-dropdown-item {
+    display: block; width: 100%; text-align: left;
+    color: #3a6b52; font-size: 11px; letter-spacing: 0.08em;
+    cursor: pointer; transition: color 0.2s, background 0.2s;
+    font-family: 'JetBrains Mono', monospace;
+    background: none; border: none; padding: 6px 14px;
+  }
+  .nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { color: #4af2a1; background: #0d1f15; }
+
   /* === CARDS === */
   .card {
     border: 0.5px solid #1e3d2a; padding: 20px; border-radius: 4px;
@@ -99,6 +116,8 @@
     transition: opacity 0.2s;
   }
   .link-arrow:hover { opacity: 1; }
+  .link-subtle { opacity: 0.4; font-size: 10px; }
+  .link-subtle:hover { opacity: 1; }
 
   /* === ROW ITEMS === */
   .row-item {
@@ -187,8 +206,8 @@
   .expandable-project.open .row-item .w { color: #4af2a1; }
 
   /* === EASTER EGG === */
-  #easter-trigger { cursor: pointer; opacity: 0.15; transition: opacity 0.3s; }
-  #easter-trigger:hover { opacity: 1; }
+  #easter-trigger { color: #3a6b52; opacity: 0.5; }
+  #easter-trigger:hover { color: #4af2a1; opacity: 1; }
 
   /* === SKILLS GRID === */
   .skills-grid {
@@ -202,15 +221,36 @@
   }
   .skill-tag:hover { color: #4af2a1; border-color: #4af2a1; }
 
+  /* === TREE LAYOUT === */
+  .tree { font-size: 13px; line-height: 2.2; }
+  .tree-line { display: flex; align-items: baseline; }
+  .tree-connector { color: #3a6b52; white-space: pre; user-select: none; }
+  .tree-entry {
+    color: #d4d4c8; cursor: pointer; text-decoration: none;
+    transition: color 0.2s;
+    background: none; border: none; padding: 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  }
+  .tree-entry:hover, .tree-entry:focus-visible { color: #4af2a1; }
+  .tree-entry:focus-visible { outline: 1px solid #4af2a1; outline-offset: 2px; border-radius: 2px; }
+  .tree-entry.nested { color: #7a8a80; }
+  .tree-entry.nested:hover, .tree-entry.nested:focus-visible { color: #4af2a1; }
+  .tree-comment { color: #3a6b52; font-size: 11px; margin-left: 12px; }
+  .tree-dot { color: #3a6b52; }
+
   /* === CONTACT ROW === */
   .contact-row {
-    display: flex; align-items: baseline; gap: 12px;
-    padding: 8px 0;
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 0;
     font-family: 'JetBrains Mono', monospace;
+    border-bottom: 0.5px solid #111c15;
   }
+  .contact-row:last-child { border-bottom: none; }
   .contact-label { font-size: 11px; color: #3a6b52; min-width: 60px; }
-  .contact-value { font-size: 12px; color: #d4d4c8; text-decoration: none; transition: color 0.2s; }
+  .contact-value { font-size: 12px; color: #d4d4c8; text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 10px; }
   .contact-value:hover { color: #4af2a1; }
+  .contact-value:hover .contact-icon { fill: #4af2a1; }
+  .contact-icon { width: 16px; height: 16px; fill: #3a6b52; transition: fill 0.2s; flex-shrink: 0; }
 
   /* === GAME === */
   #game-overlay {
@@ -233,6 +273,53 @@
     min-height: 20px; text-align: center;
   }
 
+  /* === QUIZ === */
+  .quiz-option {
+    display: block; width: 100%; text-align: left;
+    background: transparent; border: 0.5px solid #1e3d2a; color: #d4d4c8;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 10px 14px; border-radius: 3px; cursor: pointer;
+    margin-bottom: 6px; transition: border-color 0.2s, background 0.2s;
+  }
+  .quiz-option:hover:not(:disabled) { border-color: #4af2a1; background: #0d1f15; }
+  .quiz-option:disabled { cursor: default; opacity: 0.7; }
+  .quiz-option.correct { border-color: #4af2a1; background: #0d2a1a; color: #4af2a1; }
+  .quiz-option.wrong { border-color: #a87d6f; background: #1a1210; color: #a87d6f; }
+  .quiz-hint { font-size: 11px; color: #7a8a80; margin-top: 14px; line-height: 1.7; }
+  .quiz-category {
+    font-size: 10px; border: 0.5px solid #1e3d2a; color: #3a6b52;
+    padding: 2px 8px; border-radius: 2px; display: inline-block; margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .quiz-next {
+    font-size: 11px; color: #4af2a1; opacity: 0.7;
+    margin-top: 14px; display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    background: none; border: none; cursor: pointer; padding: 0;
+    transition: opacity 0.2s;
+  }
+  .quiz-next:hover { opacity: 1; }
+  .quiz-progress {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px; font-size: 11px; color: #3a6b52;
+  }
+  .quiz-progress-bar {
+    flex: 1; height: 3px; background: #1e3d2a; border-radius: 2px; overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%; background: #4af2a1; border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  .quiz-score-summary {
+    text-align: center; padding: 30px 0;
+  }
+  .quiz-score-summary .score-big {
+    font-size: 28px; font-weight: 300; color: #4af2a1; margin-bottom: 8px;
+  }
+  .quiz-score-summary .score-label {
+    font-size: 12px; color: #7a8a80; margin-bottom: 20px;
+  }
+
   /* === RESPONSIVE === */
   @media (max-width: 600px) {
     body { padding: 16px 10px; }
@@ -252,9 +339,8 @@
     #hero-wrap { height: 160px; }
     #hero-content { padding: 0 18px; }
     #hero-content p:nth-child(2) { font-size: 18px !important; }
-    .landing-grid { grid-template-columns: 1fr !important; }
-    .social-bar { flex-direction: column; align-items: flex-start !important; gap: 10px !important; }
-    .social-links { flex-wrap: wrap; }
+    .tree { font-size: 12px; line-height: 2; }
+    .tree-comment { font-size: 10px; margin-left: 8px; }
     .row-item { flex-direction: column; gap: 6px; align-items: flex-start !important; }
     #game-canvas { width: 100%; height: auto; }
     .about-links { gap: 12px !important; }
@@ -320,9 +406,16 @@
         <span class="dim" style="font-size:12px; margin-left:8px;" id="breadcrumb" aria-live="polite"></span>
       </div>
       <div style="display:flex; gap:20px;">
-        <button class="nav-item" id="nav-projects" onclick="showPage('projects')" aria-label="View projects page">projects</button>
-        <button class="nav-item" id="nav-film" onclick="showPage('film')" aria-label="View film page">film</button>
+        <div class="nav-dropdown" id="nav-dropdown-projects">
+          <button class="nav-item" id="nav-projects" onclick="toggleNavDropdown(event)" aria-label="Projects menu" aria-expanded="false">projects <span style="font-size:9px;">▾</span></button>
+          <div class="nav-dropdown-menu">
+            <button class="nav-dropdown-item" onclick="showPage('projects')">all projects</button>
+            <button class="nav-dropdown-item" id="nav-film" onclick="showPage('film')">film</button>
+            <button class="nav-dropdown-item" id="nav-liuk" onclick="showPage('liuk')">life in the uk</button>
+          </div>
+        </div>
         <button class="nav-item" id="nav-about" onclick="showPage('about')" aria-label="View about page">about</button>
+        <button class="nav-item" id="nav-contact" onclick="showPage('contact')" aria-label="View contact page">contact</button>
       </div>
     </nav>
 
@@ -338,31 +431,15 @@
           </div>
         </div>
         <hr class="divider">
-        <p class="dim" style="font-size:11px; margin-bottom:20px; letter-spacing:0.1em;" aria-hidden="true">$ ls</p>
-        <div class="landing-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <div class="row-item" style="border-bottom:0.5px solid #111c15; cursor:pointer;" onclick="showPage('projects')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('projects')">
-            <span class="w" style="font-size:13px;">projects/</span><span class="sec" style="font-size:11px;">things I've built</span>
-          </div>
-          <div class="row-item" style="border-bottom:0.5px solid #111c15; cursor:pointer;" onclick="showPage('film')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('film')">
-            <span class="w" style="font-size:13px;">film/</span><span class="sec" style="font-size:11px;">reviews &amp; ratings</span>
-          </div>
-          <div class="row-item" style="cursor:pointer;" onclick="showPage('about')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')showPage('about')">
-            <span class="w" style="font-size:13px;">about/</span><span class="sec" style="font-size:11px;">who I am</span>
-          </div>
-          <div class="row-item" style="cursor:default;">
-            <span class="w" style="font-size:13px;" id="easter-trigger" onclick="openGame()" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openGame()">???/</span>
-            <span class="sec" style="font-size:11px; opacity:0.4;">something's coming</span>
-          </div>
-        </div>
-        <hr class="divider">
-        <div class="social-bar" style="display:flex; justify-content:space-between; align-items:center;">
-          <p class="dim" style="font-size:11px; letter-spacing:0.1em;" aria-hidden="true">$ find me elsewhere</p>
-          <div class="social-links" style="display:flex; gap:16px;">
-            <a href="https://github.com/agadrapin" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">github</a>
-            <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">linkedin</a>
-            <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">x.com</a>
-            <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px;">instagram</a>
-          </div>
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">$ tree</p>
+        <div class="tree" role="tree">
+          <div class="tree-line"><span class="tree-dot">.</span></div>
+          <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('projects')" role="treeitem" tabindex="0">projects/</button><span class="tree-comment"># things I've built</span></div>
+          <div class="tree-line"><span class="tree-connector">│   ├── </span><button class="tree-entry nested" onclick="showPage('film')" role="treeitem" tabindex="0">film/</button><span class="tree-comment"># reviews &amp; ratings</span></div>
+          <div class="tree-line"><span class="tree-connector">│   └── </span><button class="tree-entry nested" onclick="showPage('liuk')" role="treeitem" tabindex="0">life-in-uk-test/</button><span class="tree-comment"># citizenship revision app</span></div>
+          <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('about')" role="treeitem" tabindex="0">about/</button><span class="tree-comment"># who I am</span></div>
+          <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('contact')" role="treeitem" tabindex="0">contact/</button><span class="tree-comment"># get in touch</span></div>
+          <div class="tree-line"><span class="tree-connector">└── </span><button class="tree-entry" id="easter-trigger" onclick="openGame()" role="treeitem" tabindex="0">???/</button><span class="tree-comment" style="opacity:0.4;"># something's coming</span></div>
         </div>
       </section>
 
@@ -375,7 +452,24 @@
             <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
             <div><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
-            <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
+            <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+              <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
+              <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none; background:none; cursor:pointer;">film rankings →</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-active">active</span>
+          <div class="card featured">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: revision flashcards</h2>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test. Practice with multiple choice questions, explore the monarch family tree, study historical timelines, notable Britons, and UK law diagrams. Available as a free web app — with an iOS app coming soon, featuring an extended flashcard library, progress tracking, mock tests, and supportive learning.</p>
+            <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span><span class="tag">github pages</span></div>
+            <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+              <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow">try it free →</a>
+              <button class="link-arrow link-subtle" onclick="showPage('liuk')" style="border:none; background:none; cursor:pointer;">try a question →</button>
+              <a href="/privacy-liuk" class="link-arrow link-subtle">privacy policy</a>
+              <a href="/terms-liuk" class="link-arrow link-subtle">terms of use</a>
+            </div>
           </div>
         </div>
         <div style="margin-bottom:14px;">
@@ -388,19 +482,6 @@
         <hr class="divider">
         <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;">// smaller projects</p>
         <div>
-          <div class="expandable-project" onclick="toggleProject(this)">
-            <div class="row-item" style="cursor:pointer;">
-              <div><span class="w" style="font-size:13px; font-weight:300;">life-in-uk-test</span><span class="sec" style="font-size:11px; margin-left:12px;">web app</span></div>
-              <div style="display:flex; gap:6px; align-items:center;"><span class="tag">finalized</span><span class="dim expand-icon" style="font-size:11px; transition:transform 0.2s;">+</span></div>
-            </div>
-            <div class="project-detail" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
-              <p class="sec" style="font-size:12px; line-height:1.7; padding:4px 0 14px;">Interactive revision tool for the Life in the UK citizenship test — multiple choice questions, monarch family tree, history timeline, notable Britons, and UK law diagrams. Built as a single HTML file.</p>
-              <div style="display:flex; gap:6px; flex-wrap:wrap; padding-bottom:10px;">
-                <span class="tag">html</span><span class="tag">javascript</span><span class="tag">offline</span>
-                <a href="https://github.com/agadrapin/life-in-uk-test" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:11px; margin-left:auto;">github →</a>
-              </div>
-            </div>
-          </div>
           <div class="expandable-project" onclick="toggleProject(this)">
             <div class="row-item" style="cursor:pointer;">
               <div><span class="w" style="font-size:13px; font-weight:300;">calisthenics-90-day-tracker</span><span class="sec" style="font-size:11px; margin-left:12px;">web app</span></div>
@@ -427,11 +508,21 @@
         <a href="https://bayleyfilmclub.com/rankings/films/" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:20px;">full rankings at bayleyfilmclub.com →</a>
       </section>
 
+      <!-- LIFE IN THE UK -->
+      <section class="page" id="page-liuk" aria-label="Life in the UK quiz">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./life-in-uk --random</p>
+        <div id="quiz-container">
+          <p class="dim" style="font-size:12px; padding:20px 0;">loading question...</p>
+        </div>
+        <hr class="divider">
+        <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow">try the full app →</a>
+      </section>
+
       <!-- ABOUT -->
       <section class="page" id="page-about" aria-label="About">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ cat about.md</p>
         <div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
-          <img id="about-photo" src="photo.jpg" alt="Aga Drapinska-Tonge" style="width:120px; height:120px; border-radius:4px; border:0.5px solid #1e3d2a; object-fit:cover; object-position:center 20%; flex-shrink:0;">
+          <img id="about-photo" src="assets/photo.jpg" alt="Aga Drapinska-Tonge" style="width:120px; height:120px; border-radius:4px; border:0.5px solid #1e3d2a; object-fit:cover; object-position:center 20%; flex-shrink:0;">
           <div class="w" style="font-size:13px; font-weight:300; line-height:1.9; max-width:520px; flex:1; min-width:240px;">
             <p>I'm Aga — a data analytics engineer and developer based in England.</p>
             <br>
@@ -453,14 +544,29 @@
           <span class="skill-tag">python</span>
         </div>
 
-        <hr class="divider">
-        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">$ find me elsewhere</p>
-        <div class="about-links" style="display:flex; gap:16px; flex-wrap:wrap;">
-          <a href="https://github.com/agadrapin" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">github →</a>
-          <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">linkedin →</a>
-          <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">x.com →</a>
-          <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer" class="nav-item" style="font-size:12px;">instagram →</a>
+      </section>
 
+      <!-- CONTACT -->
+      <section class="page" id="page-contact" aria-label="Contact">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ cat contact.md</p>
+        <p class="w" style="font-size:13px; font-weight:300; line-height:1.9; margin-bottom:24px;">Find me on the internet, or don't — I'm not your boss.</p>
+        <div>
+          <a href="https://github.com/agadrapin" target="_blank" rel="noopener noreferrer" class="contact-value contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>github</span>
+          </a>
+          <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer" class="contact-value contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>linkedin</span>
+          </a>
+          <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer" class="contact-value contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>x / twitter</span>
+          </a>
+          <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer" class="contact-value contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
+            <span>instagram</span>
+          </a>
         </div>
       </section>
     </div>
@@ -515,10 +621,28 @@ function activatePage(name) {
     });
   });
   document.querySelectorAll('#main-nav .nav-item').forEach(function(n) { n.classList.remove('active'); });
-  var nav = document.getElementById('nav-' + name);
+  var navName = (name === 'film' || name === 'liuk') ? 'projects' : name;
+  var nav = document.getElementById('nav-' + navName);
   if (nav) nav.classList.add('active');
   document.getElementById('breadcrumb').textContent = name === 'landing' ? '' : name + '/';
+  closeNavDropdown();
 }
+
+/* === NAV DROPDOWN === */
+function toggleNavDropdown(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('nav-dropdown-projects');
+  var open = dd.classList.toggle('open');
+  dd.querySelector('.nav-item').setAttribute('aria-expanded', open);
+}
+function closeNavDropdown() {
+  var dd = document.getElementById('nav-dropdown-projects');
+  dd.classList.remove('open');
+  dd.querySelector('.nav-item').setAttribute('aria-expanded', 'false');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#nav-dropdown-projects')) closeNavDropdown();
+});
 
 /* === EXPANDABLE PROJECTS === */
 function toggleProject(el) {
@@ -811,6 +935,119 @@ function loop() {
       /* If fetch fails (CORS, network, etc.), use fallback */
       renderFilms(fallbackFilms);
     });
+})();
+
+/* === LIFE IN THE UK QUIZ === */
+var quizCards = null;
+var quizCurrent = 0;
+var quizTotal = 5;
+var quizScore = 0;
+var quizUsed = [];
+
+var fallbackCards = [
+  {cat:"Values",q:"What are the fundamental principles of British life?",options:["Democracy, rule of law, individual liberty, tolerance and respect","Monarchy, tradition, class structure and strong defence","Free market, private property, limited government, low taxation","Christianity, Parliament, common law and free press"],correct:0,hint:"Listed in the handbook as core British values"},
+  {cat:"Values",q:"What does the UK government say about domestic violence?",options:["It is a private family matter","It is a serious crime and is unacceptable","It should only be reported if serious injury occurs","It is handled differently in each region of the UK"],correct:1,hint:"The UK treats domestic violence as a crime regardless of relationship"},
+  {cat:"History",q:"When did the Romans first invade Britain?",options:["AD 43 under Emperor Claudius","55 BC under Julius Caesar (first expedition)","122 AD under Emperor Hadrian","410 AD when Rome fell"],correct:1,hint:"Permanent settlement began in AD 43; Caesar\u2019s expeditions were in 55\u201354 BC"},
+  {cat:"History",q:"What was the Magna Carta?",options:["A peace treaty between England and France","A charter of rights agreed by King John in 1215","A declaration of independence from Rome","The first written English constitution"],correct:1,hint:"Signed at Runnymede, it limited the power of the king"},
+  {cat:"Government",q:"What type of government does the UK have?",options:["A federal republic with an elected president","A constitutional monarchy and parliamentary democracy","A direct democracy where citizens vote on every law","An absolute monarchy where the King has final authority"],correct:1,hint:"The monarch is head of state; political power rests with elected Parliament"},
+  {cat:"Government",q:"How often are general elections held in the UK?",options:["Every 3 years","At least every 5 years","Every 6 years","Every 4 years"],correct:1,hint:"The Fixed-term Parliaments Act set 5-year terms (now repealed but convention remains)"},
+  {cat:"Laws",q:"At what age can you buy alcohol in the UK?",options:["16","17","18","21"],correct:2,hint:"You must be 18 to buy alcohol in the UK"},
+  {cat:"Laws",q:"What is the minimum age to drive a car in the UK?",options:["16","17","18","21"],correct:1,hint:"You can apply for a provisional licence at 15 years and 9 months but drive at 17"},
+  {cat:"Culture",q:"What is the national flower of England?",options:["Daffodil","Shamrock","Rose","Thistle"],correct:2,hint:"Each UK nation has its own: England\u2014rose, Scotland\u2014thistle, Wales\u2014daffodil, N. Ireland\u2014shamrock"},
+  {cat:"Culture",q:"Who wrote Pride and Prejudice?",options:["Charlotte Bront\u00eb","Jane Austen","George Eliot","Mary Shelley"],correct:1,hint:"Jane Austen published it in 1813"}
+];
+
+function startQuiz() {
+  quizCurrent = 0;
+  quizScore = 0;
+  quizUsed = [];
+  loadQuizQuestion();
+}
+
+function pickRandomCard() {
+  var cards = quizCards || fallbackCards;
+  if (quizUsed.length >= cards.length) quizUsed = [];
+  var idx;
+  do { idx = Math.floor(Math.random() * cards.length); } while (quizUsed.indexOf(idx) !== -1);
+  quizUsed.push(idx);
+  return cards[idx];
+}
+
+function showQuizResults() {
+  var container = document.getElementById('quiz-container');
+  var pct = Math.round((quizScore / quizTotal) * 100);
+  var msg = pct >= 80 ? 'great job!' : pct >= 50 ? 'not bad — keep revising' : 'keep practising, you\'ll get there';
+  container.innerHTML = '<div class="quiz-score-summary">'
+    + '<div class="score-big">' + quizScore + '/' + quizTotal + '</div>'
+    + '<div class="score-label">' + msg + '</div>'
+    + '<button class="quiz-next" onclick="startQuiz()" style="margin-right:16px;">try again \u2192</button>'
+    + '<a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try the full app \u2192</a>'
+    + '</div>';
+}
+
+function loadQuizQuestion() {
+  quizCurrent++;
+  var card = pickRandomCard();
+  var container = document.getElementById('quiz-container');
+  var pctWidth = ((quizCurrent - 1) / quizTotal) * 100;
+  var html = '<div class="quiz-progress">'
+    + '<span>' + quizCurrent + '/' + quizTotal + '</span>'
+    + '<div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:' + pctWidth + '%"></div></div>'
+    + '<span>' + quizScore + ' correct</span>'
+    + '</div>'
+    + '<span class="quiz-category">' + card.cat + '</span>'
+    + '<p class="w" style="font-size:14px; font-weight:300; line-height:1.7; margin-bottom:16px;">' + card.q + '</p>'
+    + '<div id="quiz-options">';
+  card.options.forEach(function(opt, i) {
+    html += '<button class="quiz-option" data-index="' + i + '" data-correct="' + card.correct + '">' + opt + '</button>';
+  });
+  var isLast = quizCurrent >= quizTotal;
+  html += '</div>'
+    + '<div id="quiz-feedback" style="display:none;">'
+    + '<p class="quiz-hint">' + card.hint + '</p>'
+    + '<div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:14px;">'
+    + (isLast
+      ? '<button class="quiz-next" onclick="showQuizResults()">see results \u2192</button>'
+      : '<button class="quiz-next" onclick="loadQuizQuestion()">next question \u2192</button>')
+    + '<a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try the full app \u2192</a>'
+    + '</div></div>';
+  container.innerHTML = html;
+
+  container.querySelectorAll('.quiz-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(btn.dataset.index);
+      var correct = parseInt(btn.dataset.correct);
+      container.querySelectorAll('.quiz-option').forEach(function(b) { b.disabled = true; });
+      if (idx === correct) {
+        btn.classList.add('correct');
+        quizScore++;
+      } else {
+        btn.classList.add('wrong');
+        container.querySelectorAll('.quiz-option')[correct].classList.add('correct');
+      }
+      var fill = container.querySelector('.quiz-progress-fill');
+      fill.style.width = (quizCurrent / quizTotal * 100) + '%';
+      container.querySelector('.quiz-progress').lastElementChild.textContent = quizScore + ' correct';
+      document.getElementById('quiz-feedback').style.display = 'block';
+    });
+  });
+}
+
+/* Fetch ALL_CARDS from the live app */
+(function() {
+  fetch('https://agadrapin.github.io/life-in-uk-test/')
+    .then(function(res) { return res.text(); })
+    .then(function(html) {
+      var match = html.match(/const\s+ALL_CARDS\s*=\s*(\[[\s\S]*?\]);/);
+      if (match) {
+        try {
+          quizCards = (new Function('return ' + match[1]))();
+          if (!Array.isArray(quizCards) || quizCards.length === 0) quizCards = null;
+        } catch(e) { quizCards = null; }
+      }
+    })
+    .catch(function() { /* fallback cards already set */ })
+    .finally(function() { startQuiz(); });
 })();
 </script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
