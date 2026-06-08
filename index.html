@@ -435,8 +435,47 @@
         <div class="tree" role="tree">
           <div class="tree-line"><span class="tree-dot">.</span></div>
           <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('projects')" role="treeitem" tabindex="0">projects/</button><span class="tree-comment"># things I've built</span></div>
-          <div class="tree-line"><span class="tree-connector">│   ├── </span><button class="tree-entry nested" onclick="showPage('film')" role="treeitem" tabindex="0">film/</button><span class="tree-comment"># reviews &amp; ratings</span></div>
-          <div class="tree-line"><span class="tree-connector">│   └── </span><button class="tree-entry nested" onclick="showPage('liuk')" role="treeitem" tabindex="0">life-in-uk-test/</button><span class="tree-comment"># citizenship revision app</span></div>
+          <div class="tree-expand-wrap" id="tree-wrap-film">
+            <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('film')">
+              <span class="tree-connector">│   ├── </span>
+              <button class="tree-entry nested" onclick="event.stopPropagation(); toggleTreeItem('film')" role="treeitem" tabindex="0" aria-expanded="false" aria-controls="tree-body-film">film/</button>
+              <span class="tree-comment"># reviews &amp; ratings</span>
+              <span class="expand-icon dim" id="tree-icon-film" style="font-size:10px; margin-left:8px;">+</span>
+            </div>
+            <div class="tree-item-body" id="tree-body-film" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <div style="display:flex; align-items:flex-start;">
+                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   ├── </span>
+                <div style="padding-bottom:12px; padding-top:2px;">
+                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">Season-based film criticism — handpicked films, full written reviews, custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
+                  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                    <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">bayleyfilmclub.com →</a>
+                    <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tree-expand-wrap" id="tree-wrap-liuk">
+            <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('liuk')">
+              <span class="tree-connector">│   └── </span>
+              <button class="tree-entry nested" onclick="event.stopPropagation(); toggleTreeItem('liuk')" role="treeitem" tabindex="0" aria-expanded="false" aria-controls="tree-body-liuk">life-in-uk-test/</button>
+              <span class="tree-comment"># citizenship revision app</span>
+              <span class="expand-icon dim" id="tree-icon-liuk" style="font-size:10px; margin-left:8px;">+</span>
+            </div>
+            <div class="tree-item-body" id="tree-body-liuk" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <div style="display:flex; align-items:flex-start;">
+                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   └── </span>
+                <div style="padding-bottom:12px; padding-top:2px;">
+                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">Revision flashcards for the Life in the UK citizenship test — the one I used and passed. Free web app and iOS app now on the App Store.</p>
+                  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                    <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">App Store →</a>
+                    <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try free →</a>
+                    <button class="link-arrow link-subtle" onclick="showPage('liuk')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('about')" role="treeitem" tabindex="0">about/</button><span class="tree-comment"># who I am</span></div>
           <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('contact')" role="treeitem" tabindex="0">contact/</button><span class="tree-comment"># get in touch</span></div>
           <div class="tree-line"><span class="tree-connector">└── </span><button class="tree-entry" id="easter-trigger" onclick="openGame()" role="treeitem" tabindex="0">???/</button><span class="tree-comment" style="opacity:0.4;"># something's coming</span></div>
@@ -462,10 +501,11 @@
           <span class="badge badge-active">active</span>
           <div class="card featured">
             <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: revision flashcards</h2>
-            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test. Practice with multiple choice questions, explore the monarch family tree, study historical timelines, notable Britons, and UK law diagrams. Available as a free web app — with an iOS app coming soon, featuring an extended flashcard library, progress tracking, mock tests, and supportive learning.</p>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Practice with multiple choice questions, explore the monarch family tree, study historical timelines, notable Britons, and UK law diagrams. Available free on the web and now on the App Store for iOS.</p>
             <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span><span class="tag">github pages</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-              <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow">try it free →</a>
+              <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
+              <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">try free →</a>
               <button class="link-arrow link-subtle" onclick="showPage('liuk')" style="border:none; background:none; cursor:pointer;">try a question →</button>
               <a href="/support-liuk" class="link-arrow link-subtle">support</a>
               <a href="/privacy-liuk" class="link-arrow link-subtle">privacy policy</a>
@@ -502,6 +542,12 @@
       <!-- FILM -->
       <section class="page" id="page-film" aria-label="Film reviews">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls film/</p>
+        <div class="card featured" style="margin-bottom:24px;">
+          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
+          <div style="margin-bottom:12px;"><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
+          <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
+        </div>
         <p class="sec" style="font-size:11px; margin-bottom:16px;">top 10 from <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" style="color:#4af2a1; text-decoration:none;">bayley film club</a> &nbsp;·&nbsp; A·Anticipation &nbsp; E·Enjoyment &nbsp; R·Retrospect</p>
         <div id="film-rankings">
           <p class="dim" style="font-size:12px; padding:20px 0;">loading rankings...</p>
@@ -512,11 +558,19 @@
       <!-- LIFE IN THE UK -->
       <section class="page" id="page-liuk" aria-label="Life in the UK quiz">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./life-in-uk --random</p>
+        <div class="card featured" style="margin-bottom:24px;">
+          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: revision flashcards</h2>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Multiple choice questions, monarch family tree, historical timelines, notable Britons, and UK law diagrams. Free on the web and on the App Store for iOS.</p>
+          <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span></div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+            <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
+            <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">try free →</a>
+          </div>
+        </div>
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">// try a random question</p>
         <div id="quiz-container">
           <p class="dim" style="font-size:12px; padding:20px 0;">loading question...</p>
         </div>
-        <hr class="divider">
-        <a href="https://agadrapin.github.io/life-in-uk-test/" target="_blank" rel="noopener noreferrer" class="link-arrow">try the full app →</a>
       </section>
 
       <!-- ABOUT -->
@@ -644,6 +698,27 @@ function closeNavDropdown() {
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#nav-dropdown-projects')) closeNavDropdown();
 });
+
+/* === EXPANDABLE TREE ITEMS === */
+function toggleTreeItem(id) {
+  var wrap = document.getElementById('tree-wrap-' + id);
+  var body = document.getElementById('tree-body-' + id);
+  var icon = document.getElementById('tree-icon-' + id);
+  var btn = wrap.querySelector('.tree-entry');
+  if (wrap.classList.contains('open')) {
+    wrap.classList.remove('open');
+    body.style.maxHeight = '0';
+    body.style.opacity = '0';
+    icon.textContent = '+';
+    btn.setAttribute('aria-expanded', 'false');
+  } else {
+    wrap.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.style.opacity = '1';
+    icon.textContent = '−';
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
 
 /* === EXPANDABLE PROJECTS === */
 function toggleProject(el) {
