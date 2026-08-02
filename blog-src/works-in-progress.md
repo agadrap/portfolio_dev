@@ -8,7 +8,7 @@ dateDisplay: "2 August 2026"
 ---
 A few weeks ago I got made redundant. Not exactly the plot twist I had planned for this year, but here we are.
 
-So I asked myself — now what? I could jump back into the job search and land a similar offer, maybe even remote again (I've never liked being forced into an office), maybe even without a pay cut. But I've also been working on some projects these past few months, quietly wishing I'd get to a point where I could be my own boss and work how and from where I wanted. In other words: turns out I manifested this. I've now got the uninterrupted time to push those projects properly, and to take a few others from idea to something real.
+So I asked myself — now what? I could jump back into the job search and land a similar offer, maybe even remote again (the whole return-to-office push isn't for me), maybe even without a pay cut. But I've also been working on some projects these past few months, quietly wishing I'd get to a point where I could be my own boss and work how and from where I wanted. In other words: turns out I manifested this. I've now got the uninterrupted time to push those projects properly, and to take a few others from idea to something real.
 
 Here's where I stand: an iOS app that went into App Store review this week. Another one that's already live and already making money. A film site I run purely because I enjoy it. A pile of half-formed ideas I've been meaning to test for months.
 
