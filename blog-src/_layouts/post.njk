@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} | byaga.dev</title>
+<meta name="description" content="{{ subtitle }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ subtitle }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://byaga.dev/blog/{{ page.fileSlug }}/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 100%; max-width: 700px; }
+  .back {
+    font-size: 11px; color: #3a6b52; text-decoration: none;
+    transition: color 0.2s; display: inline-block; margin-bottom: 28px;
+  }
+  .back:hover { color: #4af2a1; }
+  .meta { color: #7a8a80; font-size: 11px; margin-bottom: 6px; letter-spacing: 0.05em; }
+  h1 { color: #4af2a1; font-size: 20px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .subtitle { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 28px; line-height: 1.6; }
+  h2 { color: #4af2a1; font-size: 14px; font-weight: 500; margin: 32px 0 12px; }
+  h3 { color: #d4d4c8; font-size: 13px; font-weight: 500; margin: 24px 0 8px; }
+  h3 a { color: #d4d4c8; }
+  h3 a:hover { color: #4af2a1; text-decoration: none; }
+  p { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.9; margin-bottom: 16px; }
+  ul { margin: 0 0 16px 20px; }
+  li { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.8; margin-bottom: 10px; }
+  strong { color: #d4d4c8; font-weight: 500; }
+  a { color: #4af2a1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+  .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .links a { font-size: 11px; color: #4af2a1; opacity: 0.7; transition: opacity 0.2s; }
+  .links a:hover { opacity: 1; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/#blog">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+  <p class="meta">{{ dateDisplay }} · works in progress</p>
+  <h1>{{ title }}</h1>
+  <p class="subtitle">{{ subtitle }}</p>
+
+  {{ content | safe }}
+
+  <hr>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
+</div>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
+</body>
+</html>

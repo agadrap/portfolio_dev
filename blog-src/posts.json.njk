@@ -1,0 +1,15 @@
+---
+permalink: /posts.json
+eleventyExcludeFromCollections: true
+---
+[
+{%- for post in collections.post | reverse %}
+  {
+    "slug": "{{ post.fileSlug }}",
+    "title": {{ post.data.title | jsonify | safe }},
+    "date": {{ post.data.dateDisplay | jsonify | safe }},
+    "excerpt": {{ post.data.subtitle | jsonify | safe }},
+    "url": "/blog/{{ post.fileSlug }}/"
+  }{% if not loop.last %},{% endif %}
+{%- endfor %}
+]
