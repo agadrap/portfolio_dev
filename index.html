@@ -220,6 +220,11 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .skill-tag:hover { color: #4af2a1; border-color: #4af2a1; }
+  .skill-group { margin-bottom: 18px; }
+  .skill-group-label {
+    color: #3a6b52; font-size: 10px; letter-spacing: 0.1em; margin-bottom: 8px;
+  }
+  .skill-group .skills-grid { margin-top: 0; }
 
   /* === TREE LAYOUT === */
   .tree { font-size: 13px; line-height: 2.2; }
@@ -367,6 +372,20 @@
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     #scroll-bg { animation: none !important; }
   }
+
+  /* === SITE FOOTER === */
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; transition: color 0.2s; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
 </style>
 </head>
 <body>
@@ -412,8 +431,10 @@
             <button class="nav-dropdown-item" onclick="showPage('projects')">all projects</button>
             <button class="nav-dropdown-item" id="nav-film" onclick="showPage('film')">film</button>
             <button class="nav-dropdown-item" id="nav-liuk" onclick="showPage('liuk')">life in the uk</button>
+            <button class="nav-dropdown-item" id="nav-elbow" onclick="showPage('elbow')">elbow</button>
           </div>
         </div>
+        <button class="nav-item" id="nav-blog" onclick="showPage('blog')" aria-label="View blog page">blog</button>
         <button class="nav-item" id="nav-about" onclick="showPage('about')" aria-label="View about page">about</button>
         <button class="nav-item" id="nav-contact" onclick="showPage('contact')" aria-label="View contact page">contact</button>
       </div>
@@ -457,14 +478,14 @@
           </div>
           <div class="tree-expand-wrap" id="tree-wrap-liuk">
             <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('liuk')">
-              <span class="tree-connector">│   └── </span>
+              <span class="tree-connector">│   ├── </span>
               <button class="tree-entry nested" onclick="event.stopPropagation(); toggleTreeItem('liuk')" role="treeitem" tabindex="0" aria-expanded="false" aria-controls="tree-body-liuk">life-in-uk-test/</button>
               <span class="tree-comment"># citizenship revision app</span>
               <span class="expand-icon dim" id="tree-icon-liuk" style="font-size:10px; margin-left:8px;">+</span>
             </div>
             <div class="tree-item-body" id="tree-body-liuk" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
               <div style="display:flex; align-items:flex-start;">
-                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   └── </span>
+                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   ├── </span>
                 <div style="padding-bottom:12px; padding-top:2px;">
                   <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">Revision flashcards for the Life in the UK citizenship test — the one I used and passed. Free web app and iOS app now on the App Store.</p>
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
@@ -480,6 +501,27 @@
               </div>
             </div>
           </div>
+          <div class="tree-expand-wrap" id="tree-wrap-elbow">
+            <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('elbow')">
+              <span class="tree-connector">│   └── </span>
+              <button class="tree-entry nested" onclick="event.stopPropagation(); toggleTreeItem('elbow')" role="treeitem" tabindex="0" aria-expanded="false" aria-controls="tree-body-elbow">elbow/</button>
+              <span class="tree-comment"># home cleaning app</span>
+              <span class="expand-icon dim" id="tree-icon-elbow" style="font-size:10px; margin-left:8px;">+</span>
+            </div>
+            <div class="tree-item-body" id="tree-body-elbow" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <div style="display:flex; align-items:flex-start;">
+                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   └── </span>
+                <div style="padding-bottom:12px; padding-top:2px;">
+                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Currently in App Store review.</p>
+                  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                    <a href="https://elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">elbow-app.com →</a>
+                    <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('blog')" role="treeitem" tabindex="0">blog/</button><span class="tree-comment"># building in public</span></div>
           <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('about')" role="treeitem" tabindex="0">about/</button><span class="tree-comment"># who I am</span></div>
           <div class="tree-line"><span class="tree-connector">├── </span><button class="tree-entry" onclick="showPage('contact')" role="treeitem" tabindex="0">contact/</button><span class="tree-comment"># get in touch</span></div>
           <div class="tree-line"><span class="tree-connector">└── </span><button class="tree-entry" id="easter-trigger" onclick="openGame()" role="treeitem" tabindex="0">???/</button><span class="tree-comment" style="opacity:0.4;"># something's coming</span></div>
@@ -490,20 +532,20 @@
       <section class="page" id="page-projects" aria-label="Projects">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
         <div style="margin-bottom:14px;">
-          <span class="badge badge-active">active</span>
-          <div class="card featured">
-            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
-            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
-            <div><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
+          <span class="badge badge-soon">in review</span>
+          <div class="card featured" onclick="projectCardClick(event, 'elbow')" onkeydown="if(event.key==='Enter')showPage('elbow')" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Currently in App Store review.</p>
+            <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-              <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
-              <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none; background:none; cursor:pointer;">film rankings →</button>
+              <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow">elbow-app.com →</a>
+              <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none; background:none; cursor:pointer;">more →</button>
             </div>
           </div>
         </div>
         <div style="margin-bottom:14px;">
           <span class="badge badge-active">active</span>
-          <div class="card featured">
+          <div class="card featured" onclick="projectCardClick(event, 'liuk')" onkeydown="if(event.key==='Enter')showPage('liuk')" role="link" tabindex="0" style="cursor:pointer;">
             <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: flashcards</h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Practice with multiple choice questions, explore the monarch family tree, study historical timelines, notable Britons, and UK law diagrams. Available free on the web and now on the App Store for iOS.</p>
             <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span><span class="tag">github pages</span></div>
@@ -515,6 +557,18 @@
               <a href="https://lifeintheukflashcards.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
               <a href="https://lifeintheukflashcards.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
               <a href="https://lifeintheukflashcards.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-active">active</span>
+          <div class="card featured" onclick="projectCardClick(event, 'film')" onkeydown="if(event.key==='Enter')showPage('film')" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
+            <div><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
+            <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+              <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
+              <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none; background:none; cursor:pointer;">film rankings →</button>
             </div>
           </div>
         </div>
@@ -544,8 +598,17 @@
         </div>
       </section>
 
+      <!-- BLOG -->
+      <section class="page" id="page-blog" aria-label="Blog">
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls blog/</p>
+        <div id="blog-list">
+          <p class="sec" style="font-size:12px;">Loading…</p>
+        </div>
+      </section>
+
       <!-- FILM -->
       <section class="page" id="page-film" aria-label="Film reviews">
+        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls film/</p>
         <div class="card featured" style="margin-bottom:24px;">
           <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
@@ -562,6 +625,7 @@
 
       <!-- LIFE IN THE UK -->
       <section class="page" id="page-liuk" aria-label="Life in the UK quiz">
+        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./life-in-uk --random</p>
         <div class="card featured" style="margin-bottom:24px;">
           <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: flashcards</h2>
@@ -582,6 +646,23 @@
         </div>
       </section>
 
+      <!-- ELBOW -->
+      <section class="page" id="page-elbow" aria-label="elbow">
+        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./elbow --home</p>
+        <div class="card featured" style="margin-bottom:24px;">
+          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app for iOS: room-by-room cleaning routines, step-by-step appliance care, stain rescue guides, and household sharing. Private by design — your data stays in your own iCloud, never on my servers. Currently in App Store review.</p>
+          <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+            <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow">elbow-app.com →</a>
+            <a href="https://www.elbow-app.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
+            <a href="https://www.elbow-app.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
+            <a href="https://www.elbow-app.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
+          </div>
+        </div>
+      </section>
+
       <!-- ABOUT -->
       <section class="page" id="page-about" aria-label="About">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ cat about.md</p>
@@ -598,14 +679,48 @@
 
         <hr class="divider">
         <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">// tools I work with</p>
-        <div class="skills-grid">
-          <span class="skill-tag">sql</span>
-          <span class="skill-tag">dbt</span>
-          <span class="skill-tag">bigquery</span>
-          <span class="skill-tag">html/css</span>
-          <span class="skill-tag">git</span>
-          <span class="skill-tag">data pipelines</span>
-          <span class="skill-tag">python</span>
+        <div class="skill-group">
+          <p class="skill-group-label">// data</p>
+          <div class="skills-grid">
+            <span class="skill-tag">sql</span>
+            <span class="skill-tag">python</span>
+            <span class="skill-tag">dbt</span>
+            <span class="skill-tag">bigquery</span>
+            <span class="skill-tag">data pipelines</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">// ios</p>
+          <div class="skills-grid">
+            <span class="skill-tag">swift</span>
+            <span class="skill-tag">swiftui</span>
+            <span class="skill-tag">core data</span>
+            <span class="skill-tag">cloudkit</span>
+            <span class="skill-tag">storekit</span>
+            <span class="skill-tag">widgetkit</span>
+            <span class="skill-tag">xcode</span>
+            <span class="skill-tag">xcodegen</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">// web</p>
+          <div class="skills-grid">
+            <span class="skill-tag">html/css</span>
+            <span class="skill-tag">javascript</span>
+            <span class="skill-tag">eleventy</span>
+            <span class="skill-tag">nunjucks</span>
+            <span class="skill-tag">markdown</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">// build &amp; deploy</p>
+          <div class="skills-grid">
+            <span class="skill-tag">git</span>
+            <span class="skill-tag">github actions</span>
+            <span class="skill-tag">github pages</span>
+            <span class="skill-tag">cloudflare workers</span>
+            <span class="skill-tag">claude code</span>
+          </div>
         </div>
 
       </section>
@@ -631,8 +746,23 @@
             <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
             <span>instagram</span>
           </a>
+          <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer" class="contact-value contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.386.521a2.994 2.994 0 0 0-2.112 2.12C0 8.07 0 12 0 12s0 3.93.502 5.814a2.994 2.994 0 0 0 2.112 2.12c1.881.521 9.386.521 9.386.521s7.505 0 9.386-.521a2.994 2.994 0 0 0 2.112-2.12C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.75 15.568V8.432L15.818 12l-6.068 3.568z"/></svg>
+            <span>youtube</span>
+          </a>
         </div>
       </section>
+      <div class="footer-statusbar">
+        <span style="color:#4af2a1;">[byaga.dev]</span>
+        <span style="display:flex; gap:12px; color:#7a8a80;">
+          <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+          <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+          <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+        </span>
+        <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+      </div>
     </div>
   </div>
 
@@ -685,12 +815,54 @@ function activatePage(name) {
     });
   });
   document.querySelectorAll('#main-nav .nav-item').forEach(function(n) { n.classList.remove('active'); });
-  var navName = (name === 'film' || name === 'liuk') ? 'projects' : name;
+  var navName = (name === 'film' || name === 'liuk' || name === 'elbow') ? 'projects' : name;
   var nav = document.getElementById('nav-' + navName);
   if (nav) nav.classList.add('active');
   document.getElementById('breadcrumb').textContent = name === 'landing' ? '' : name + '/';
   closeNavDropdown();
+  if (window.history && history.replaceState) {
+    history.replaceState(null, '', name === 'landing' ? '/' : '#' + name);
+  }
 }
+
+function projectCardClick(event, name) {
+  if (event.target.closest('a, button')) return;
+  showPage(name);
+}
+
+/* === HASH ROUTING (deep links from standalone pages) === */
+var VALID_PAGES = ['landing', 'projects', 'film', 'liuk', 'elbow', 'blog', 'about', 'contact'];
+function pageFromHash() {
+  var h = (location.hash || '').replace('#', '');
+  return VALID_PAGES.indexOf(h) !== -1 ? h : null;
+}
+var initialPage = pageFromHash();
+if (initialPage && initialPage !== 'landing') {
+  showPage(initialPage);
+}
+window.addEventListener('hashchange', function() {
+  var p = pageFromHash();
+  if (p) showPage(p);
+});
+
+/* === BLOG LIST === */
+fetch('/blog/posts.json')
+  .then(function(r) { return r.json(); })
+  .then(function(posts) {
+    var list = document.getElementById('blog-list');
+    if (!posts.length) { list.innerHTML = '<p class="sec" style="font-size:12px;">Nothing published yet — check back soon.</p>'; return; }
+    list.innerHTML = posts.map(function(p) {
+      return '<a href="' + p.url + '" style="display:block; margin-bottom:14px; text-decoration:none; color:inherit;"><div class="card featured">' +
+        '<h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">' + p.title + '</h2>' +
+        '<p class="sec" style="font-size:11px; margin-bottom:8px;">' + p.date + '</p>' +
+        '<p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">' + p.excerpt + '</p>' +
+        '<div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;"><span class="link-arrow">read →</span></div>' +
+        '</div></a>';
+    }).join('');
+  })
+  .catch(function() {
+    document.getElementById('blog-list').innerHTML = '<p class="sec" style="font-size:12px;">Couldn\'t load posts right now.</p>';
+  });
 
 /* === NAV DROPDOWN === */
 function toggleNavDropdown(e) {

@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support — elbow | byaga.dev</title>
-<meta name="description" content="Get support for elbow — a home that looks after itself.">
-<meta name="robots" content="noindex">
+<title>{{ title }} | byaga.dev</title>
+<meta name="description" content="{{ subtitle }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ subtitle }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://byaga.dev/blog/{{ page.fileSlug }}/">
+<meta name="twitter:card" content="summary">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -28,11 +32,20 @@
     transition: color 0.2s; display: inline-block; margin-bottom: 28px;
   }
   .back:hover { color: #4af2a1; }
-  h1 { color: #4af2a1; font-size: 15px; font-weight: 500; margin-bottom: 24px; }
-  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 24px 0; }
-  p { color: #d4d4c8; font-size: 12px; font-weight: 300; line-height: 1.9; margin-bottom: 14px; }
+  .meta { color: #7a8a80; font-size: 11px; margin-bottom: 6px; letter-spacing: 0.05em; }
+  h1 { color: #4af2a1; font-size: 20px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .subtitle { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 28px; line-height: 1.6; }
+  h2 { color: #4af2a1; font-size: 14px; font-weight: 500; margin: 32px 0 12px; }
+  h3 { color: #d4d4c8; font-size: 13px; font-weight: 500; margin: 24px 0 8px; }
+  h3 a { color: #d4d4c8; }
+  h3 a:hover { color: #4af2a1; text-decoration: none; }
+  p { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.9; margin-bottom: 16px; }
+  ul { margin: 0 0 16px 20px; }
+  li { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.8; margin-bottom: 10px; }
+  strong { color: #d4d4c8; font-weight: 500; }
   a { color: #4af2a1; text-decoration: none; }
   a:hover { text-decoration: underline; }
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
   .links { display: flex; gap: 16px; flex-wrap: wrap; }
   .links a { font-size: 11px; color: #4af2a1; opacity: 0.7; transition: opacity 0.2s; }
   .links a:hover { opacity: 1; }
@@ -72,15 +85,13 @@
       <a href="/#contact">contact</a>
     </div>
   </nav>
-  <h1>Support — elbow</h1>
-  <p>Having trouble with the app? We're here to help.</p>
-  <p>Email us at <a href="mailto:hello@byaga.dev">hello@byaga.dev</a></p>
-  <p>We aim to respond within 2 business days.</p>
+  <p class="meta">{{ dateDisplay }} · works in progress</p>
+  <h1>{{ title }}</h1>
+  <p class="subtitle">{{ subtitle }}</p>
+
+  {{ content | safe }}
+
   <hr>
-  <div class="links">
-    <a href="/privacy-elbow">privacy policy →</a>
-    <a href="/terms-elbow">terms of use →</a>
-  </div>
   <div class="footer-statusbar">
     <span style="color:#4af2a1;">[byaga.dev]</span>
     <span style="display:flex; gap:12px; color:#7a8a80;">

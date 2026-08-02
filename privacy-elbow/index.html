@@ -40,6 +40,26 @@
   a:hover { text-decoration: underline; }
   strong { color: #d4d4c8; font-weight: 500; }
   .footer { color: #3a6b52; font-size: 11px; margin-top: 8px; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
   @media (max-width: 600px) {
     body { padding: 16px 10px; }
   }
@@ -47,7 +67,15 @@
 </head>
 <body>
 <div class="page">
-  <a href="javascript:history.back()" class="back">← back</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/#blog">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
   <h1>Privacy Policy — elbow</h1>
   <span class="updated">Last updated: July 2026</span>
   <hr>
@@ -102,7 +130,17 @@
   <h2>10. Contact</h2>
   <p>For any privacy-related questions, email <a href="mailto:hello@byaga.dev">hello@byaga.dev</a>.</p>
   <hr>
-  <p class="footer">© 2026 Aga Drapinska-Tonge. All rights reserved.</p>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
 </div>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
 </body>
