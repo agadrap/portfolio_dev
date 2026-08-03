@@ -69,6 +69,32 @@
     animation: blink 1s steps(1) infinite;
   }
   @keyframes blink { 50% { opacity: 0; } }
+  .signup-box {
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    padding: 16px 18px; margin-top: 32px;
+  }
+  .signup-label {
+    color: #3a6b52; font-size: 10px; letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .signup-form {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .signup-form input[type="email"] {
+    flex: 1 1 220px;
+    background: #040806; border: 0.5px solid #1a2e22; border-radius: 3px;
+    color: #d4d4c8; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 10px; outline: none;
+  }
+  .signup-form input[type="email"]::placeholder { color: #3a6b52; }
+  .signup-form input[type="email"]:focus { border-color: #4af2a1; }
+  .signup-form button {
+    background: transparent; border: 0.5px solid #4af2a1; border-radius: 3px;
+    color: #4af2a1; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 14px; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .signup-form button:hover { background: #4af2a1; color: #040806; }
+  .signup-note { color: #7a8a80; font-size: 11px; margin: 0; }
   @media (max-width: 600px) {
     body { padding: 16px 10px; }
   }
@@ -90,6 +116,15 @@
   <p class="subtitle">{{ subtitle }}</p>
 
   {{ content | safe }}
+
+  <div class="signup-box">
+    <p class="signup-label">// subscribe</p>
+    <form action="https://app.kit.com/forms/9759126/subscriptions" method="post" class="signup-form">
+      <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">subscribe →</button>
+    </form>
+    <p class="signup-note">Occasional build-in-public updates. Unsubscribe anytime.</p>
+  </div>
 
   <hr>
   <div class="footer-statusbar">
