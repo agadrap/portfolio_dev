@@ -3,3 +3,6 @@
 *~
 .env
 node_modules/
+
+# Claude context (local only, not versioned)
+CLAUDE.md
