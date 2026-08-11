@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>elbow Got Rejected. Here&#39;s Exactly Why. | byaga.dev</title>
+<meta name="description" content="I had a feeling it wouldn&#39;t pass on the first try. Three small, avoidable mistakes — and what I&#39;m doing differently on round two.">
+<meta property="og:title" content="elbow Got Rejected. Here&#39;s Exactly Why.">
+<meta property="og:description" content="I had a feeling it wouldn&#39;t pass on the first try. Three small, avoidable mistakes — and what I&#39;m doing differently on round two.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://byaga.dev/blog/elbow-app-store-rejection/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 100%; max-width: 700px; }
+  .back {
+    font-size: 11px; color: #3a6b52; text-decoration: none;
+    transition: color 0.2s; display: inline-block; margin-bottom: 28px;
+  }
+  .back:hover { color: #4af2a1; }
+  .meta { color: #7a8a80; font-size: 11px; margin-bottom: 6px; letter-spacing: 0.05em; }
+  h1 { color: #4af2a1; font-size: 20px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .subtitle { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 28px; line-height: 1.6; }
+  h2 { color: #4af2a1; font-size: 14px; font-weight: 500; margin: 32px 0 12px; }
+  h3 { color: #d4d4c8; font-size: 13px; font-weight: 500; margin: 24px 0 8px; }
+  h3 a { color: #d4d4c8; }
+  h3 a:hover { color: #4af2a1; text-decoration: none; }
+  p { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.9; margin-bottom: 16px; }
+  ul { margin: 0 0 16px 20px; }
+  li { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.8; margin-bottom: 10px; }
+  strong { color: #d4d4c8; font-weight: 500; }
+  a { color: #4af2a1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+  .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .links a { font-size: 11px; color: #4af2a1; opacity: 0.7; transition: opacity 0.2s; }
+  .links a:hover { opacity: 1; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .signup-box {
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    padding: 16px 18px; margin-top: 32px;
+  }
+  .signup-label {
+    color: #3a6b52; font-size: 10px; letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .signup-form {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .signup-form input[type="email"] {
+    flex: 1 1 220px;
+    background: #040806; border: 0.5px solid #1a2e22; border-radius: 3px;
+    color: #d4d4c8; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 10px; outline: none;
+  }
+  .signup-form input[type="email"]::placeholder { color: #3a6b52; }
+  .signup-form input[type="email"]:focus { border-color: #4af2a1; }
+  .signup-form button {
+    background: transparent; border: 0.5px solid #4af2a1; border-radius: 3px;
+    color: #4af2a1; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 14px; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .signup-form button:hover { background: #4af2a1; color: #040806; }
+  .signup-note { color: #7a8a80; font-size: 11px; margin: 0; }
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/#blog">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+  <p class="meta">11 August 2026 · works in progress</p>
+  <h1>elbow Got Rejected. Here&#39;s Exactly Why.</h1>
+  <p class="subtitle">I had a feeling it wouldn&#39;t pass on the first try. Three small, avoidable mistakes — and what I&#39;m doing differently on round two.</p>
+
+  <p>I said, at the end of the last post, that I doubted <a href="https://www.elbow-app.com">elbow</a> would get through App Store review on the first try. That wasn't false modesty — it was a genuine feeling, the kind you get when you know you moved a bit too fast at the end. I was right. It got rejected.</p>
+<p>Not for one thing. For three. All small, all completely avoidable in hindsight, and all worth writing down properly — the reel version only had room for the headline.</p>
+<h2>What actually happened</h2>
+<p>I'd requested an expedited review a few days earlier, mostly out of impatience, and mostly assuming it wouldn't do much. It did — the verdict came back fast. Just not the verdict I wanted. Three separate issues, all flagged at once.</p>
+<h3>Mistake one: I only submitted the app</h3>
+<p>I'd assumed the app record was the whole submission. It isn't — if you have in-app purchases or subscriptions, those are separate elements that need to be added and submitted alongside the app itself. I hadn't done that. So as far as Apple's review was concerned, I'd shipped an app with a paywall that led nowhere, because the thing behind the paywall was never actually part of the package.</p>
+<p>Obvious once you know it. Not obvious the first time you're doing it — except I'd already done it correctly once before. <a href="https://lifeintheukflashcards.com/">Life in the UK: Flashcards</a> has essentially the same setup — an app record plus separate purchase elements — and I got that right the first time round. I should have known better on elbow than to assume the app record alone would cover it.</p>
+<h3>Mistake two: a price that wasn't actually on Apple's list</h3>
+<p>This one wasn't carelessness — I'd actually looked at what comparable apps charge before picking a number. A quick scan of other cleaning-schedule apps shows monthly subscriptions landing anywhere from under a pound to around four or five, with a fair few sitting right in the two-to-three range. £2.49 was a deliberate choice, aimed at that middle-of-market spot rather than pulled out of thin air.</p>
+<p>The mistake was technical, not strategic: I hardcoded that number into the app without checking it against Apple's actual price list first. App Store Connect doesn't let you type in an arbitrary price — you pick from a fixed set of Apple-approved price points, and 2.49 simply isn't one of them. The closest option above it is 2.99. So the number I'd researched and built the paywall around didn't exist as a sellable tier, and the fix wasn't &quot;pick a different price,&quot; it was &quot;pick the nearest real one.&quot;</p>
+<h3>Mistake three: an iPad I never meant to ship</h3>
+<p>Somewhere in the Xcode project settings, the destination for the app included iPad, not just iPhone. I never tested it on iPad, never designed a layout for it, and never intended to support it — elbow is a phone app, full stop. But Apple doesn't know &quot;never intended to&quot; — it just sees a submission claiming iPad support with none of the required iPad screenshots or landscape handling, and flags it accordingly.</p>
+<h2>Fixing it</h2>
+<p>Once you know what's wrong, none of this is hard. I removed the iPad destination entirely and pulled the iPad screenshots I'd added, since there's no reason to fight landscape support for a device I never meant to target. And I resubmitted properly this time — the app, the lifetime purchase, and the monthly and yearly subscriptions, all as their own elements, all together.</p>
+<p>The price was the fiddly one, though, precisely because it was hardcoded — baked directly into the app's compiled code rather than something I could just tweak as a setting in App Store Connect. Changing it meant going back into the source, editing the actual value, and creating a new build: a fresh compiled version of the app, made from the updated code. That new build then has to be uploaded and attached to the submission before you resubmit — you can't fix a hardcoded value after the fact the way you can flip a toggle. So &quot;change one number&quot; turned into &quot;recompile and re-upload the whole app,&quot; which is a good reminder not to hardcode anything you might need to change in a hurry.</p>
+<p>The expedited review did what it promised, for what it's worth: it got me a fast answer. It just happened to be a fast <em>no</em>. I'd take that trade again — a quick, specific rejection beats a slow, vague one every time, because at least you know exactly what to fix.</p>
+<h2>Where this leaves things</h2>
+<p>Back in the review queue. Technically square one — same app, same starting line. But this round I'm considerably more optimistic than the last one, mostly because &quot;optimistic&quot; this time is based on actually knowing what was wrong, rather than just hoping nothing was.</p>
+<p>The runway's still counting down in the background, same as ever, so this isn't a huge deal either way — a rejected submission costs a review cycle, not the whole plan. But I'd rather it clear on the second try than the third.</p>
+<p>Next update: whether round two actually goes through. Fingers crossed, genuinely this time.</p>
+
+
+  <div class="signup-box">
+    <p class="signup-label">// subscribe</p>
+    <form action="https://app.kit.com/forms/9759126/subscriptions" method="post" class="signup-form">
+      <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">subscribe →</button>
+    </form>
+    <p class="signup-note">Occasional build-in-public updates. Unsubscribe anytime.</p>
+  </div>
+
+  <hr>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
+</div>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
+</body>
+</html>
