@@ -460,6 +460,7 @@
             <button class="nav-dropdown-item" id="nav-film" onclick="showPage('film')">film</button>
             <button class="nav-dropdown-item" id="nav-liuk" onclick="showPage('liuk')">life in the uk</button>
             <button class="nav-dropdown-item" id="nav-elbow" onclick="showPage('elbow')">elbow</button>
+            <button class="nav-dropdown-item" id="nav-earbind" onclick="showPage('earbind')">earbind</button>
           </div>
         </div>
         <button class="nav-item" id="nav-blog" onclick="showPage('blog')" aria-label="View blog page">blog</button>
@@ -529,6 +530,26 @@
               </div>
             </div>
           </div>
+          <div class="tree-expand-wrap" id="tree-wrap-earbind">
+            <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('earbind')">
+              <span class="tree-connector">│   ├── </span>
+              <button class="tree-entry nested" onclick="event.stopPropagation(); toggleTreeItem('earbind')" role="treeitem" tabindex="0" aria-expanded="false" aria-controls="tree-body-earbind">earbind/</button>
+              <span class="tree-comment"># audiobooks, made searchable</span>
+              <span class="expand-icon dim" id="tree-icon-earbind" style="font-size:10px; margin-left:8px;">+</span>
+            </div>
+            <div class="tree-item-body" id="tree-body-earbind" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease, opacity 0.35s ease; opacity:0;">
+              <div style="display:flex; align-items:flex-start;">
+                <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   ├── </span>
+                <div style="padding-bottom:12px; padding-top:2px;">
+                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A hosted page for an audiobook — audio, full transcript, real chapters, and a search that jumps to the exact word. Transcribed locally, served from the edge. First paying-customer product.</p>
+                  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                    <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">earbind.com →</a>
+                    <button class="link-arrow link-subtle" onclick="showPage('earbind')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="tree-expand-wrap" id="tree-wrap-elbow">
             <div class="tree-line" style="cursor:pointer;" onclick="toggleTreeItem('elbow')">
               <span class="tree-connector">│   └── </span>
@@ -540,7 +561,7 @@
               <div style="display:flex; align-items:flex-start;">
                 <span class="tree-connector" style="flex-shrink:0; visibility:hidden; line-height:1;">│   └── </span>
                 <div style="padding-bottom:12px; padding-top:2px;">
-                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Currently in App Store review.</p>
+                  <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Live on the App Store.</p>
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
                     <a href="https://elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">elbow-app.com →</a>
                     <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
@@ -560,13 +581,26 @@
       <section class="page" id="page-projects" aria-label="Projects">
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
         <div style="margin-bottom:14px;">
-          <span class="badge badge-soon">in review</span>
+          <span class="badge badge-active">live</span>
+          <div class="card featured" onclick="projectCardClick(event, 'earbind')" onkeydown="if(event.key==='Enter')showPage('earbind')" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">earbind</h2>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">Turns an audiobook into a page you can actually use — audio, full transcript, real chapters, and a search that jumps to the exact word. Authors send one link instead of a file, and keep their own readers. Transcribed locally, served from the edge.</p>
+            <div style="margin-bottom:12px;"><span class="tag">python</span><span class="tag">whisper</span><span class="tag">ffmpeg</span><span class="tag">cloudflare workers</span><span class="tag">r2</span></div>
+            <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+              <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow">earbind.com →</a>
+              <button class="link-arrow link-subtle" onclick="showPage('earbind')" style="border:none; background:none; cursor:pointer;">more →</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-active">live</span>
           <div class="card featured" onclick="projectCardClick(event, 'elbow')" onkeydown="if(event.key==='Enter')showPage('elbow')" role="link" tabindex="0" style="cursor:pointer;">
             <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
-            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Currently in App Store review.</p>
+            <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Live on the App Store.</p>
             <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-              <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow">elbow-app.com →</a>
+              <a href="https://apps.apple.com/gb/app/elbow/id6796699431" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
+              <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">elbow-app.com →</a>
               <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none; background:none; cursor:pointer;">more →</button>
             </div>
           </div>
@@ -688,13 +722,30 @@
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./elbow --home</p>
         <div class="card featured" style="margin-bottom:24px;">
           <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app for iOS: room-by-room cleaning routines, step-by-step appliance care, stain rescue guides, and household sharing. Private by design — your data stays in your own iCloud, never on my servers. Currently in App Store review.</p>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app for iOS: room-by-room cleaning routines, step-by-step appliance care, stain rescue guides, and household sharing. Private by design — your data stays in your own iCloud, never on my servers. Live on the App Store.</p>
           <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
           <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-            <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow">elbow-app.com →</a>
+            <a href="https://apps.apple.com/gb/app/elbow/id6796699431" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
+            <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">elbow-app.com →</a>
             <a href="https://www.elbow-app.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
             <a href="https://www.elbow-app.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
             <a href="https://www.elbow-app.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- EARBIND -->
+      <section class="page" id="page-earbind" aria-label="earbind">
+        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
+        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./earbind --listen</p>
+        <div class="card featured" style="margin-bottom:24px;">
+          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">earbind</h2>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">An audiobook, as a page instead of a file. The reader gets the audio, the full transcript, real chapters, and a search box that jumps to the exact word — no app, no account, nothing to install. The author gets a private editor to fix whatever the transcription misheard, and publishes when they are happy.</p>
+          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">Built because an author sent me her book as a three-and-a-half-hour Dropbox file with no chapters, and I kept losing my place. Transcription runs locally — an unreleased book never goes to a third-party service. The output is a static page in a private bucket behind one edge function — no framework, no database, nothing to keep running.</p>
+          <div style="margin-bottom:12px;"><span class="tag">python</span><span class="tag">whisper</span><span class="tag">ffmpeg</span><span class="tag">cloudflare workers</span><span class="tag">r2</span><span class="tag">no framework</span></div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+            <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow">earbind.com →</a>
+            <a href="https://earbind.com/#waitlist" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">join the waitlist →</a>
           </div>
         </div>
       </section>
@@ -867,7 +918,7 @@ function projectCardClick(event, name) {
 }
 
 /* === HASH ROUTING (deep links from standalone pages) === */
-var VALID_PAGES = ['landing', 'projects', 'film', 'liuk', 'elbow', 'blog', 'about', 'contact'];
+var VALID_PAGES = ['landing', 'projects', 'film', 'liuk', 'elbow', 'earbind', 'blog', 'about', 'contact'];
 function pageFromHash() {
   var h = (location.hash || '').replace('#', '');
   return VALID_PAGES.indexOf(h) !== -1 ? h : null;
