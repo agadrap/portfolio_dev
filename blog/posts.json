@@ -1,5 +1,19 @@
 [
   {
+    "slug": "earbind-from-annoyance-to-live-product",
+    "title": "I Got Annoyed at an Audiobook and Built Earbind",
+    "date": "15 September 2026",
+    "excerpt": "Two weekends from a Dropbox file I couldn't navigate to a live product with a real author using it.",
+    "url": "/blog/earbind-from-annoyance-to-live-product/"
+  },
+  {
+    "slug": "elbow-is-live-and-the-part-i-couldnt-test",
+    "title": "elbow Is Live. Then the Part I Couldn't Test Broke.",
+    "date": "14 September 2026",
+    "excerpt": "Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can't check.",
+    "url": "/blog/elbow-is-live-and-the-part-i-couldnt-test/"
+  },
+  {
     "slug": "elbow-app-store-rejection",
     "title": "elbow Got Rejected. Here's Exactly Why.",
     "date": "11 August 2026",

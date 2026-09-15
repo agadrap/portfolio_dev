@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>elbow Is Live. Then the Part I Couldn&#39;t Test Broke. | byaga.dev</title>
+<meta name="description" content="Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can&#39;t check.">
+<meta property="og:title" content="elbow Is Live. Then the Part I Couldn&#39;t Test Broke.">
+<meta property="og:description" content="Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can&#39;t check.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://byaga.dev/blog/elbow-is-live-and-the-part-i-couldnt-test/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 100%; max-width: 700px; }
+  .back {
+    font-size: 11px; color: #3a6b52; text-decoration: none;
+    transition: color 0.2s; display: inline-block; margin-bottom: 28px;
+  }
+  .back:hover { color: #4af2a1; }
+  .meta { color: #7a8a80; font-size: 11px; margin-bottom: 6px; letter-spacing: 0.05em; }
+  h1 { color: #4af2a1; font-size: 20px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .subtitle { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 28px; line-height: 1.6; }
+  h2 { color: #4af2a1; font-size: 14px; font-weight: 500; margin: 32px 0 12px; }
+  h3 { color: #d4d4c8; font-size: 13px; font-weight: 500; margin: 24px 0 8px; }
+  h3 a { color: #d4d4c8; }
+  h3 a:hover { color: #4af2a1; text-decoration: none; }
+  p { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.9; margin-bottom: 16px; }
+  ul { margin: 0 0 16px 20px; }
+  li { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.8; margin-bottom: 10px; }
+  strong { color: #d4d4c8; font-weight: 500; }
+  a { color: #4af2a1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+  .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .links a { font-size: 11px; color: #4af2a1; opacity: 0.7; transition: opacity 0.2s; }
+  .links a:hover { opacity: 1; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .signup-box {
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    padding: 16px 18px; margin-top: 32px;
+  }
+  .signup-label {
+    color: #3a6b52; font-size: 10px; letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .signup-form {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .signup-form input[type="email"] {
+    flex: 1 1 220px;
+    background: #040806; border: 0.5px solid #1a2e22; border-radius: 3px;
+    color: #d4d4c8; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 10px; outline: none;
+  }
+  .signup-form input[type="email"]::placeholder { color: #3a6b52; }
+  .signup-form input[type="email"]:focus { border-color: #4af2a1; }
+  .signup-form button {
+    background: transparent; border: 0.5px solid #4af2a1; border-radius: 3px;
+    color: #4af2a1; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 14px; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .signup-form button:hover { background: #4af2a1; color: #040806; }
+  .signup-note { color: #7a8a80; font-size: 11px; margin: 0; }
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/#blog">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+  <p class="meta">14 September 2026 · works in progress</p>
+  <h1>elbow Is Live. Then the Part I Couldn&#39;t Test Broke.</h1>
+  <p class="subtitle">Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can&#39;t check.</p>
+
+  <p>Last time I wrote here, <a href="https://www.elbow-app.com">elbow</a> had just been rejected for three small things, and I said I'd be back with whether round two went through.</p>
+<p>It did. elbow is on the <a href="https://apps.apple.com/gb/app/elbow/id6796699431">App Store</a>.</p>
+<p>That's the good bit, and it's genuinely a good bit. But it isn't the interesting part of the last few weeks, because getting approved turned out to be the easy half.</p>
+<h2>The feature I couldn't test</h2>
+<p>elbow has household sharing on the paid tier: you share your cleaning setup with whoever else lives in your house, so you're not both scrubbing the same bathroom on a Tuesday. It's the main reason to pay.</p>
+<p>It didn't work.</p>
+<p>Not &quot;worked with a bug&quot; — it just didn't. And here's the thing I hadn't properly reckoned with: <strong>I couldn't test it on my own.</strong> Household sharing needs two real devices with two different real Apple IDs. The Xcode simulator can't do it. My own phone can't do it, because sharing with yourself isn't sharing. So the one feature that justifies the subscription is the one feature I had no way to check before shipping, and I shipped it anyway because everything else worked.</p>
+<p>I borrowed a second phone. Then I was debugging across two devices, one of which wasn't with me at all times — applying a fix, pushing a build, waiting for someone to get home and tell me what happened. Three different fixes went out that way. Each one felt like the one.</p>
+<h2>What it actually was</h2>
+<p>I tested the third fix. It didn't work either — so I left it for the weekend and came back to it on the Monday, which turned out to be the most useful thing I did all week. I woke up with actual ideas about what was wrong, which I definitely would not have had at 9pm on the Friday staring at the same screen.</p>
+<p>The app was reading the wrong setup — not a broken sharing implementation, but the wrong environment underneath it, so the invitation was being made in one place and looked for in another. Once I could see that, the fix was small.</p>
+<p>Two things helped more than the code did. One: I'd built a diagnostics view inside the app, which let me confirm what version and configuration each phone was actually running instead of assuming. When you're debugging something that only reproduces on hardware you're not holding, &quot;what is that device <em>actually</em> doing&quot; is most of the battle. Two: stepping away from it.</p>
+<p>I reset it, re-shared the link, and it worked. On two phones, both real, both with their own accounts. I was chuffed.</p>
+<h2>What I'm taking from it</h2>
+<p><strong>The features you can't easily test are the ones that break.</strong> Obvious written down. Much less obvious when you're a week from shipping and everything you <em>can</em> test is passing — the untestable thing quietly becomes the thing you assume is fine, precisely because you can't prove it isn't.</p>
+<p><strong>A friend's fresh eyes are worth more than another hour of my own.</strong> Somewhere in the middle of all this, a friend downloaded elbow and did a proper UX pass — a long list of places where something wasn't obvious, or didn't behave the way she expected. Honestly, gold. None of it was what I'd have looked at myself, because I've used this app for months and I've stopped being able to see it. That list is what I'll work on next for elbow.</p>
+<p><strong>Build the diagnostics before you need them.</strong> I added that view almost as an afterthought. It's the thing that eventually told me what was wrong.</p>
+<h2>Where it is now</h2>
+<p>elbow is live, household sharing works, and it's now available in the EU as well. That last one was its own small saga: Apple requires a verified trader status to sell into the EU, and mine was stuck because the addresses on my developer account didn't match each other exactly. It took raising a ticket and getting them aligned before it cleared — no code involved, just paperwork that quietly blocks an entire market until it's right.</p>
+<p>Next up are the UX notes — the small &quot;why doesn't this do what I expect&quot; things that don't break anything but make the difference between an app someone keeps and one they delete.</p>
+<p>elbow is on the <a href="https://apps.apple.com/gb/app/elbow/id6796699431">App Store</a>, and there's more about it at <a href="https://www.elbow-app.com">elbow-app.com</a>.</p>
+<p>And there's a new project, which started because I got annoyed listening to an audiobook. More on that in the next post.</p>
+
+
+  <div class="signup-box">
+    <p class="signup-label">// subscribe</p>
+    <form action="https://app.kit.com/forms/9759126/subscriptions" method="post" class="signup-form">
+      <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">subscribe →</button>
+    </form>
+    <p class="signup-note">Occasional build-in-public updates. Unsubscribe anytime.</p>
+  </div>
+
+  <hr>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
+</div>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
+</body>
+</html>
