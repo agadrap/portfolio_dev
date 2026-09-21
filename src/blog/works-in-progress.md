@@ -18,17 +18,17 @@ That's the whole premise here: Works in Progress. Also a decent description of m
 
 ## What I'm actually working on
 
-### [elbow](https://www.elbow-app.com)
+### [elbow](https://elbow-app.com)
 
-My second app — home cleaning, room by room. Built it, tested it on my own phone for months, and as of this week it's sitting in Apple's review queue. First real test of whether I can ship something people actually pay for twice. [elbow-app.com →](https://www.elbow-app.com)
+My second app — home cleaning, room by room. Built it, tested it on my own phone for months, and as of this week it's sitting in Apple's review queue. First real test of whether I can ship something people actually pay for twice. [elbow-app.com →](https://elbow-app.com)
 
-### [Life in the UK](https://www.lifeintheukflashcards.com)
+### [Life in the UK](https://lifeintheukflashcards.com)
 
-The one that's already out and already earning — a test-prep app for the UK citizenship test. It's been coasting on minimal maintenance for a while; it's getting a proper push now instead, and I'll be bragging about it where I can. [lifeintheukflashcards.com →](https://www.lifeintheukflashcards.com)
+The one that's already out and already earning — a test-prep app for the UK citizenship test. It's been coasting on minimal maintenance for a while; it's getting a proper push now instead, and I'll be bragging about it where I can. [lifeintheukflashcards.com →](https://lifeintheukflashcards.com)
 
-### [The Bayley Film Club](https://www.bayleyfilmclub.com)
+### [The Bayley Film Club](https://bayleyfilmclub.com)
 
-A film review site I built because I wanted to, not because the numbers work. It's staying exactly that — a hobby, not a business plan. I reckon it's worth keeping at least one thing purely for enjoyment. [bayleyfilmclub.com →](https://www.bayleyfilmclub.com)
+A film review site I built because I wanted to, not because the numbers work. It's staying exactly that — a hobby, not a business plan. I reckon it's worth keeping at least one thing purely for enjoyment. [bayleyfilmclub.com →](https://bayleyfilmclub.com)
 
 ### A secret project
 

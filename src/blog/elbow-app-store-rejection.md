@@ -6,7 +6,7 @@ subtitle: "I had a feeling it wouldn't pass on the first try. Three small, avoid
 date: 2026-08-11
 dateDisplay: "11 August 2026"
 ---
-I said, at the end of the last post, that I doubted [elbow](https://www.elbow-app.com) would get through App Store review on the first try. That wasn't false modesty — it was a genuine feeling, the kind you get when you know you moved a bit too fast at the end. I was right. It got rejected.
+I said, at the end of the last post, that I doubted [elbow](https://elbow-app.com) would get through App Store review on the first try. That wasn't false modesty — it was a genuine feeling, the kind you get when you know you moved a bit too fast at the end. I was right. It got rejected.
 
 Not for one thing. For three. All small, all completely avoidable in hindsight, and all worth writing down properly — the reel version only had room for the headline.
 

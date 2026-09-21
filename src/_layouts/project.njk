@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — projects — byaga.dev</title>
+<meta name="description" content="{{ description or tagline }}">
+<meta name="author" content="Aga Drapinska-Tonge">
+<meta name="theme-color" content="#040806">
+<link rel="canonical" href="https://byaga.dev/projects/{{ page.fileSlug }}/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }} — byaga.dev">
+<meta property="og:description" content="{{ description or tagline }}">
+<meta property="og:url" content="https://byaga.dev/projects/{{ page.fileSlug }}/">
+<meta property="og:site_name" content="byaga.dev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title }} — byaga.dev">
+<meta name="twitter:description" content="{{ description or tagline }}">
+<meta name="twitter:creator" content="@dr_agniieszka">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+{% if schemaType == "SoftwareApplication" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": {{ title | jsonify | safe }},
+  "description": {{ (description or tagline) | jsonify | safe }},
+  "applicationCategory": {{ (applicationCategory or "LifestyleApplication") | jsonify | safe }},
+  "operatingSystem": {{ (operatingSystem or "iOS") | jsonify | safe }},
+  "url": {{ (websiteUrl or ("https://byaga.dev/projects/" + page.fileSlug + "/")) | jsonify | safe }},
+  {% if appStoreUrl %}"installUrl": {{ appStoreUrl | jsonify | safe }},{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "Aga Drapinska-Tonge",
+    "url": "https://byaga.dev"
+  }
+}
+</script>
+{% elif schemaType == "WebSite" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ title | jsonify | safe }},
+  "description": {{ (description or tagline) | jsonify | safe }},
+  "url": {{ websiteUrl | jsonify | safe }},
+  "author": {
+    "@type": "Person",
+    "name": "Aga Drapinska-Tonge",
+    "url": "https://byaga.dev"
+  }
+}
+</script>
+{% endif %}
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 100%; max-width: 700px; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .breadcrumb-line { color: #3a6b52; font-size: 11px; margin-bottom: 6px; letter-spacing: 0.05em; }
+  .prompt { color: #3a6b52; font-size: 11px; margin-bottom: 20px; letter-spacing: 0.1em; }
+  h1 { color: #4af2a1; font-size: 22px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .tagline { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 24px; line-height: 1.7; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .badge {
+    font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px;
+    border: 0.5px solid #1e3d2a; color: #4af2a1;
+  }
+  .badge.live { color: #4af2a1; border-color: #1e3d2a; }
+  .badge.soon { color: #9a8f6a; border-color: #3a3520; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag {
+    font-size: 11px; color: #7a8a80; padding: 2px 8px;
+    border: 0.5px solid #1a2e22; border-radius: 2px;
+  }
+  .links { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .link-arrow { color: #4af2a1; font-size: 12px; text-decoration: none; }
+  .link-arrow:hover { text-decoration: underline; }
+  .link-subtle { opacity: 0.7; }
+  .link-subtle:hover { opacity: 1; }
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+  h2 { color: #4af2a1; font-size: 14px; font-weight: 500; margin: 32px 0 12px; }
+  h3 { color: #d4d4c8; font-size: 13px; font-weight: 500; margin: 24px 0 8px; }
+  p { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.9; margin-bottom: 16px; }
+  ul { margin: 0 0 16px 20px; }
+  li { color: #d4d4c8; font-size: 13px; font-weight: 300; line-height: 1.8; margin-bottom: 10px; }
+  strong { color: #d4d4c8; font-weight: 500; }
+  a { color: #4af2a1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back {
+    font-size: 11px; color: #3a6b52; text-decoration: none;
+    display: inline-block; margin-bottom: 20px; transition: color 0.2s;
+  }
+  .back:hover { color: #4af2a1; }
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/#blog">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+
+  <a href="/#projects" class="back">← all projects</a>
+  {% if prompt %}<p class="prompt" aria-hidden="true">{{ prompt }}</p>{% endif %}
+
+  <h1>{{ title }}</h1>
+  {% if tagline %}<p class="tagline">{{ tagline }}</p>{% endif %}
+
+  {% if status %}
+  <div class="badges">
+    <span class="badge {{ status }}">{{ status }}</span>
+  </div>
+  {% endif %}
+
+  {% if tags %}
+  <div class="tags">
+    {% for t in tags %}{% if t != "project" %}<span class="tag">{{ t }}</span>{% endif %}{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if links %}
+  <div class="links">
+    {% for l in links %}
+    <a href="{{ l.href }}"{% if l.href|first != "/" and l.href|first != "#" %} target="_blank" rel="noopener noreferrer"{% endif %} class="link-arrow{% if not l.primary %} link-subtle{% endif %}">{{ l.label }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {{ content | safe }}
+
+  <hr>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
+</div>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
+</body>
+</html>

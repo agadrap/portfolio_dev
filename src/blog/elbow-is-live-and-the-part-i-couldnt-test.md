@@ -6,7 +6,7 @@ subtitle: "Round two went through. Then the paid feature failed in the wild — 
 date: 2026-09-14
 dateDisplay: "14 September 2026"
 ---
-Last time I wrote here, [elbow](https://www.elbow-app.com) had just been rejected for three small things, and I said I'd be back with whether round two went through.
+Last time I wrote here, [elbow](https://elbow-app.com) had just been rejected for three small things, and I said I'd be back with whether round two went through.
 
 It did. elbow is on the [App Store](https://apps.apple.com/gb/app/elbow/id6796699431).
 
@@ -46,6 +46,6 @@ elbow is live, household sharing works, and it's now available in the EU as well
 
 Next up are the UX notes — the small "why doesn't this do what I expect" things that don't break anything but make the difference between an app someone keeps and one they delete.
 
-elbow is on the [App Store](https://apps.apple.com/gb/app/elbow/id6796699431), and there's more about it at [elbow-app.com](https://www.elbow-app.com).
+elbow is on the [App Store](https://apps.apple.com/gb/app/elbow/id6796699431), and there's more about it at [elbow-app.com](https://elbow-app.com).
 
 And there's a new project, which started because I got annoyed listening to an audiobook. More on that in the next post.

@@ -1,12 +1,13 @@
-name: Build blog
+name: Build site
 
 on:
   push:
     branches: [main]
     paths:
-      - 'blog-src/**'
+      - 'src/**'
       - '.eleventy.js'
       - 'package.json'
+      - '.github/workflows/build-blog.yml'
   workflow_dispatch:
 
 permissions:
@@ -28,13 +29,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build blog with Eleventy
+      - name: Build site with Eleventy
         run: npm run build
 
-      - name: Commit built blog
+      - name: Sync built output to repo root
+        run: |
+          rsync -a --delete _site/blog/ blog/
+          mkdir -p projects
+          if [ -d _site/projects ]; then rsync -a --delete _site/projects/ projects/; fi
+          [ -f _site/sitemap.xml ] && cp _site/sitemap.xml sitemap.xml || true
+          [ -f _site/robots.txt ] && cp _site/robots.txt robots.txt || true
+
+      - name: Commit built output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog/
-          git diff --staged --quiet || git commit -m "Build blog [skip ci]"
+          git add blog/ projects/ sitemap.xml robots.txt 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Build site [skip ci]"
           git push

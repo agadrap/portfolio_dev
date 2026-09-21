@@ -4,5 +4,8 @@
 .env
 node_modules/
 
+# Eleventy build output (built into blog/ and projects/ by CI)
+_site/
+
 # Claude context (local only, not versioned)
 CLAUDE.md
