@@ -21,6 +21,43 @@
 <meta name="twitter:description" content="Data analytics engineer, developer, and film reviewer. Building things across data, code, and cinema.">
 <meta name="twitter:creator" content="@dr_agniieszka">
 
+<link rel="canonical" href="https://byaga.dev/">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aga Drapinska-Tonge",
+  "url": "https://byaga.dev",
+  "jobTitle": "Data analytics engineer & developer",
+  "sameAs": [
+    "https://bayleyfilmclub.com",
+    "https://lifeintheukflashcards.com",
+    "https://earbind.com",
+    "https://elbow-app.com",
+    "https://github.com/agadrap",
+    "https://www.linkedin.com/in/agnieszkadrapinska/",
+    "https://x.com/dr_agniieszka",
+    "https://instagram.com/agalogue",
+    "https://www.youtube.com/@agalogue",
+    "https://letterboxd.com/dr_agnieszka/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "byaga.dev",
+  "url": "https://byaga.dev",
+  "author": {
+    "@type": "Person",
+    "name": "Aga Drapinska-Tonge"
+  }
+}
+</script>
+
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -78,7 +115,9 @@
     cursor: pointer; transition: color 0.2s, background 0.2s;
     font-family: 'JetBrains Mono', monospace;
     background: none; border: none; padding: 6px 14px;
+    text-decoration: none;
   }
+  a.nav-dropdown-item { box-sizing: border-box; }
   .nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { color: #4af2a1; background: #0d1f15; }
 
   /* === CARDS === */
@@ -278,52 +317,6 @@
     min-height: 20px; text-align: center;
   }
 
-  /* === QUIZ === */
-  .quiz-option {
-    display: block; width: 100%; text-align: left;
-    background: transparent; border: 0.5px solid #1e3d2a; color: #d4d4c8;
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    padding: 10px 14px; border-radius: 3px; cursor: pointer;
-    margin-bottom: 6px; transition: border-color 0.2s, background 0.2s;
-  }
-  .quiz-option:hover:not(:disabled) { border-color: #4af2a1; background: #0d1f15; }
-  .quiz-option:disabled { cursor: default; opacity: 0.7; }
-  .quiz-option.correct { border-color: #4af2a1; background: #0d2a1a; color: #4af2a1; }
-  .quiz-option.wrong { border-color: #a87d6f; background: #1a1210; color: #a87d6f; }
-  .quiz-hint { font-size: 11px; color: #7a8a80; margin-top: 14px; line-height: 1.7; }
-  .quiz-category {
-    font-size: 10px; border: 0.5px solid #1e3d2a; color: #3a6b52;
-    padding: 2px 8px; border-radius: 2px; display: inline-block; margin-bottom: 12px;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .quiz-next {
-    font-size: 11px; color: #4af2a1; opacity: 0.7;
-    margin-top: 14px; display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    background: none; border: none; cursor: pointer; padding: 0;
-    transition: opacity 0.2s;
-  }
-  .quiz-next:hover { opacity: 1; }
-  .quiz-progress {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 16px; font-size: 11px; color: #3a6b52;
-  }
-  .quiz-progress-bar {
-    flex: 1; height: 3px; background: #1e3d2a; border-radius: 2px; overflow: hidden;
-  }
-  .quiz-progress-fill {
-    height: 100%; background: #4af2a1; border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-  .quiz-score-summary {
-    text-align: center; padding: 30px 0;
-  }
-  .quiz-score-summary .score-big {
-    font-size: 28px; font-weight: 300; color: #4af2a1; margin-bottom: 8px;
-  }
-  .quiz-score-summary .score-label {
-    font-size: 12px; color: #7a8a80; margin-bottom: 20px;
-  }
 
   /* === RESPONSIVE === */
   @media (max-width: 600px) {
@@ -457,10 +450,10 @@
           <button class="nav-item" id="nav-projects" onclick="toggleNavDropdown(event)" aria-label="Projects menu" aria-expanded="false">projects <span style="font-size:9px;">▾</span></button>
           <div class="nav-dropdown-menu">
             <button class="nav-dropdown-item" onclick="showPage('projects')">all projects</button>
-            <button class="nav-dropdown-item" id="nav-film" onclick="showPage('film')">film</button>
-            <button class="nav-dropdown-item" id="nav-liuk" onclick="showPage('liuk')">life in the uk</button>
-            <button class="nav-dropdown-item" id="nav-elbow" onclick="showPage('elbow')">elbow</button>
-            <button class="nav-dropdown-item" id="nav-earbind" onclick="showPage('earbind')">earbind</button>
+            <a class="nav-dropdown-item" href="/projects/film/">film</a>
+            <a class="nav-dropdown-item" href="/projects/liuk/">life in the uk</a>
+            <a class="nav-dropdown-item" href="/projects/elbow/">elbow</a>
+            <a class="nav-dropdown-item" href="/projects/earbind/">earbind</a>
           </div>
         </div>
         <button class="nav-item" id="nav-blog" onclick="showPage('blog')" aria-label="View blog page">blog</button>
@@ -499,7 +492,7 @@
                   <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">Season-based film criticism — handpicked films, full written reviews, custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
                     <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">bayleyfilmclub.com →</a>
-                    <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                    <a href="/projects/film/" class="link-arrow link-subtle" style="margin-top:0;">more →</a>
                   </div>
                 </div>
               </div>
@@ -520,11 +513,7 @@
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
                     <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">App Store →</a>
                     <a href="https://lifeintheukflashcards.com/practice/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try free →</a>
-                    <a href="https://lifeintheukflashcards.com/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">website →</a>
-                    <a href="https://lifeintheukflashcards.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">support →</a>
-                    <a href="https://lifeintheukflashcards.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">privacy policy →</a>
-                    <a href="https://lifeintheukflashcards.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">terms of use →</a>
-                    <button class="link-arrow link-subtle" onclick="showPage('liuk')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                    <a href="/projects/liuk/" class="link-arrow link-subtle" style="margin-top:0;">more →</a>
                   </div>
                 </div>
               </div>
@@ -544,7 +533,7 @@
                   <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A hosted page for an audiobook — audio, full transcript, real chapters, and a search that jumps to the exact word. Transcribed locally, served from the edge. First paying-customer product.</p>
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
                     <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">earbind.com →</a>
-                    <button class="link-arrow link-subtle" onclick="showPage('earbind')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                    <a href="/projects/earbind/" class="link-arrow link-subtle" style="margin-top:0;">more →</a>
                   </div>
                 </div>
               </div>
@@ -564,7 +553,7 @@
                   <p class="sec" style="font-size:12px; line-height:1.7; padding-bottom:8px;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Live on the App Store.</p>
                   <div style="display:flex; gap:14px; flex-wrap:wrap;">
                     <a href="https://elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:0;">elbow-app.com →</a>
-                    <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none;background:none;cursor:pointer;margin-top:0;">more →</button>
+                    <a href="/projects/elbow/" class="link-arrow link-subtle" style="margin-top:0;">more →</a>
                   </div>
                 </div>
               </div>
@@ -582,55 +571,51 @@
         <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
         <div style="margin-bottom:14px;">
           <span class="badge badge-active">live</span>
-          <div class="card featured" onclick="projectCardClick(event, 'earbind')" onkeydown="if(event.key==='Enter')showPage('earbind')" role="link" tabindex="0" style="cursor:pointer;">
-            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">earbind</h2>
+          <div class="card featured" data-project-href="/projects/earbind/" onclick="projectCardClick(event, this)" onkeydown="if(event.key==='Enter') location.href = this.dataset.projectHref;" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;"><a href="/projects/earbind/" style="color:inherit; text-decoration:none;">earbind</a></h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">Turns an audiobook into a page you can actually use — audio, full transcript, real chapters, and a search that jumps to the exact word. Authors send one link instead of a file, and keep their own readers. Transcribed locally, served from the edge.</p>
             <div style="margin-bottom:12px;"><span class="tag">python</span><span class="tag">whisper</span><span class="tag">ffmpeg</span><span class="tag">cloudflare workers</span><span class="tag">r2</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
               <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow">earbind.com →</a>
-              <button class="link-arrow link-subtle" onclick="showPage('earbind')" style="border:none; background:none; cursor:pointer;">more →</button>
+              <a href="/projects/earbind/" class="link-arrow link-subtle">more →</a>
             </div>
           </div>
         </div>
         <div style="margin-bottom:14px;">
           <span class="badge badge-active">live</span>
-          <div class="card featured" onclick="projectCardClick(event, 'elbow')" onkeydown="if(event.key==='Enter')showPage('elbow')" role="link" tabindex="0" style="cursor:pointer;">
-            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
+          <div class="card featured" data-project-href="/projects/elbow/" onclick="projectCardClick(event, this)" onkeydown="if(event.key==='Enter') location.href = this.dataset.projectHref;" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;"><a href="/projects/elbow/" style="color:inherit; text-decoration:none;">elbow</a></h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app — room-by-room routines, appliance care, stain rescue, and household sharing. Private by design. Live on the App Store.</p>
             <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
               <a href="https://apps.apple.com/gb/app/elbow/id6796699431" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
-              <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">elbow-app.com →</a>
-              <button class="link-arrow link-subtle" onclick="showPage('elbow')" style="border:none; background:none; cursor:pointer;">more →</button>
+              <a href="https://elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">elbow-app.com →</a>
+              <a href="/projects/elbow/" class="link-arrow link-subtle">more →</a>
             </div>
           </div>
         </div>
         <div style="margin-bottom:14px;">
-          <span class="badge badge-active">active</span>
-          <div class="card featured" onclick="projectCardClick(event, 'liuk')" onkeydown="if(event.key==='Enter')showPage('liuk')" role="link" tabindex="0" style="cursor:pointer;">
-            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: flashcards</h2>
+          <span class="badge badge-active">live</span>
+          <div class="card featured" data-project-href="/projects/liuk/" onclick="projectCardClick(event, this)" onkeydown="if(event.key==='Enter') location.href = this.dataset.projectHref;" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;"><a href="/projects/liuk/" style="color:inherit; text-decoration:none;">life in the uk: flashcards</a></h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Practice with multiple choice questions, explore the monarch family tree, study historical timelines, notable Britons, and UK law diagrams. Available free on the web and now on the App Store for iOS.</p>
             <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span><span class="tag">github pages</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
               <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
               <a href="https://lifeintheukflashcards.com/practice/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">try free →</a>
-              <button class="link-arrow link-subtle" onclick="showPage('liuk')" style="border:none; background:none; cursor:pointer;">try a question →</button>
-              <a href="https://lifeintheukflashcards.com/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">website →</a>
-              <a href="https://lifeintheukflashcards.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
-              <a href="https://lifeintheukflashcards.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
-              <a href="https://lifeintheukflashcards.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
+              <a href="/projects/liuk/" class="link-arrow link-subtle">more →</a>
             </div>
           </div>
         </div>
         <div style="margin-bottom:14px;">
-          <span class="badge badge-active">active</span>
-          <div class="card featured" onclick="projectCardClick(event, 'film')" onkeydown="if(event.key==='Enter')showPage('film')" role="link" tabindex="0" style="cursor:pointer;">
-            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
+          <span class="badge badge-active">live</span>
+          <div class="card featured" data-project-href="/projects/film/" onclick="projectCardClick(event, this)" onkeydown="if(event.key==='Enter') location.href = this.dataset.projectHref;" role="link" tabindex="0" style="cursor:pointer;">
+            <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;"><a href="/projects/film/" style="color:inherit; text-decoration:none;">bayley film club</a></h2>
             <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
             <div><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
             <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
               <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
-              <button class="link-arrow link-subtle" onclick="showPage('film')" style="border:none; background:none; cursor:pointer;">film rankings →</button>
+              <a href="/projects/film/" class="link-arrow link-subtle">more →</a>
             </div>
           </div>
         </div>
@@ -673,80 +658,6 @@
             <button type="submit">subscribe →</button>
           </form>
           <p class="signup-note">Occasional build-in-public updates. Unsubscribe anytime.</p>
-        </div>
-      </section>
-
-      <!-- FILM -->
-      <section class="page" id="page-film" aria-label="Film reviews">
-        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
-        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls film/</p>
-        <div class="card featured" style="margin-bottom:24px;">
-          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">bayley film club</h2>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A season-based film criticism site built with Eleventy. Each season spotlights one director — handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).</p>
-          <div style="margin-bottom:12px;"><span class="tag">eleventy</span><span class="tag">nunjucks</span><span class="tag">css</span><span class="tag">github pages</span></div>
-          <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" class="link-arrow">bayleyfilmclub.com →</a>
-        </div>
-        <p class="sec" style="font-size:11px; margin-bottom:16px;">top 10 from <a href="https://bayleyfilmclub.com" target="_blank" rel="noopener noreferrer" style="color:#4af2a1; text-decoration:none;">bayley film club</a> &nbsp;·&nbsp; A·Anticipation &nbsp; E·Enjoyment &nbsp; R·Retrospect</p>
-        <div id="film-rankings">
-          <p class="dim" style="font-size:12px; padding:20px 0;">loading rankings...</p>
-        </div>
-        <a href="https://bayleyfilmclub.com/rankings/films/" target="_blank" rel="noopener noreferrer" class="link-arrow" style="margin-top:20px;">full rankings at bayleyfilmclub.com →</a>
-      </section>
-
-      <!-- LIFE IN THE UK -->
-      <section class="page" id="page-liuk" aria-label="Life in the UK quiz">
-        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
-        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./life-in-uk --random</p>
-        <div class="card featured" style="margin-bottom:24px;">
-          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">life in the uk: flashcards</h2>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Multiple choice questions, monarch family tree, historical timelines, notable Britons, and UK law diagrams. Free on the web and on the App Store for iOS.</p>
-          <div style="margin-bottom:12px;"><span class="tag">html</span><span class="tag">javascript</span><span class="tag">swift</span><span class="tag">ios</span></div>
-          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-            <a href="https://apps.apple.com/gb/app/life-in-the-uk-flashcards/id6761814656" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
-            <a href="https://lifeintheukflashcards.com/practice/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">try free →</a>
-            <a href="https://lifeintheukflashcards.com/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">website →</a>
-            <a href="https://lifeintheukflashcards.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
-            <a href="https://lifeintheukflashcards.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
-            <a href="https://lifeintheukflashcards.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
-          </div>
-        </div>
-        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">// try a random question</p>
-        <div id="quiz-container">
-          <p class="dim" style="font-size:12px; padding:20px 0;">loading question...</p>
-        </div>
-      </section>
-
-      <!-- ELBOW -->
-      <section class="page" id="page-elbow" aria-label="elbow">
-        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
-        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./elbow --home</p>
-        <div class="card featured" style="margin-bottom:24px;">
-          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">elbow</h2>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">A home-cleaning app for iOS: room-by-room cleaning routines, step-by-step appliance care, stain rescue guides, and household sharing. Private by design — your data stays in your own iCloud, never on my servers. Live on the App Store.</p>
-          <div style="margin-bottom:12px;"><span class="tag">swift</span><span class="tag">ios</span><span class="tag">cloudkit</span><span class="tag">storekit</span></div>
-          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-            <a href="https://apps.apple.com/gb/app/elbow/id6796699431" target="_blank" rel="noopener noreferrer" class="link-arrow">App Store →</a>
-            <a href="https://www.elbow-app.com" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">elbow-app.com →</a>
-            <a href="https://www.elbow-app.com/support/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">support →</a>
-            <a href="https://www.elbow-app.com/privacy/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">privacy policy →</a>
-            <a href="https://www.elbow-app.com/terms/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">terms of use →</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- EARBIND -->
-      <section class="page" id="page-earbind" aria-label="earbind">
-        <button class="link-arrow link-subtle" onclick="showPage('projects')" style="border:none; background:none; cursor:pointer; margin-bottom:16px; font-size:11px;">← all projects</button>
-        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ./earbind --listen</p>
-        <div class="card featured" style="margin-bottom:24px;">
-          <h2 class="g" style="font-size:13px; font-weight:500; margin-bottom:6px;">earbind</h2>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">An audiobook, as a page instead of a file. The reader gets the audio, the full transcript, real chapters, and a search box that jumps to the exact word — no app, no account, nothing to install. The author gets a private editor to fix whatever the transcription misheard, and publishes when they are happy.</p>
-          <p class="w" style="font-size:13px; font-weight:300; margin-bottom:12px; line-height:1.6;">Built because an author sent me her book as a three-and-a-half-hour Dropbox file with no chapters, and I kept losing my place. Transcription runs locally — an unreleased book never goes to a third-party service. The output is a static page in a private bucket behind one edge function — no framework, no database, nothing to keep running.</p>
-          <div style="margin-bottom:12px;"><span class="tag">python</span><span class="tag">whisper</span><span class="tag">ffmpeg</span><span class="tag">cloudflare workers</span><span class="tag">r2</span><span class="tag">no framework</span></div>
-          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-            <a href="https://earbind.com" target="_blank" rel="noopener noreferrer" class="link-arrow">earbind.com →</a>
-            <a href="https://earbind.com/#waitlist" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle">join the waitlist →</a>
-          </div>
         </div>
       </section>
 
@@ -894,6 +805,7 @@ function showPage(name) {
 
 function activatePage(name) {
   var page = document.getElementById('page-' + name);
+  if (!page) return;
   page.style.opacity = '0';
   page.classList.add('active');
   requestAnimationFrame(function() {
@@ -902,8 +814,7 @@ function activatePage(name) {
     });
   });
   document.querySelectorAll('#main-nav .nav-item').forEach(function(n) { n.classList.remove('active'); });
-  var navName = (name === 'film' || name === 'liuk' || name === 'elbow') ? 'projects' : name;
-  var nav = document.getElementById('nav-' + navName);
+  var nav = document.getElementById('nav-' + name);
   if (nav) nav.classList.add('active');
   document.getElementById('breadcrumb').textContent = name === 'landing' ? '' : name + '/';
   closeNavDropdown();
@@ -912,13 +823,14 @@ function activatePage(name) {
   }
 }
 
-function projectCardClick(event, name) {
+function projectCardClick(event, cardEl) {
   if (event.target.closest('a, button')) return;
-  showPage(name);
+  var href = cardEl && cardEl.dataset && cardEl.dataset.projectHref;
+  if (href) location.href = href;
 }
 
 /* === HASH ROUTING (deep links from standalone pages) === */
-var VALID_PAGES = ['landing', 'projects', 'film', 'liuk', 'elbow', 'earbind', 'blog', 'about', 'contact'];
+var VALID_PAGES = ['landing', 'projects', 'blog', 'about', 'contact'];
 function pageFromHash() {
   var h = (location.hash || '').replace('#', '');
   return VALID_PAGES.indexOf(h) !== -1 ? h : null;
@@ -1007,6 +919,7 @@ function toggleProject(el) {
 
 /* === ENTER SITE === */
 function enterSite() {
+  try { localStorage.setItem('bootShownAt', Date.now().toString()); } catch(e) {}
   var aw = document.getElementById('alert-wrap');
   aw.style.opacity = '0';
   setTimeout(function() {
@@ -1015,6 +928,22 @@ function enterSite() {
     main.style.display = 'block';
     setTimeout(function() { main.style.opacity = '1'; }, 30);
   }, 500);
+}
+
+function skipBootIfRecent() {
+  try {
+    var last = parseInt(localStorage.getItem('bootShownAt') || '0', 10);
+    var oneDay = 24 * 60 * 60 * 1000;
+    if (last && (Date.now() - last) < oneDay) {
+      document.getElementById('boot').style.display = 'none';
+      document.getElementById('alert-wrap').style.display = 'none';
+      var main = document.getElementById('main');
+      main.style.display = 'block';
+      main.style.opacity = '1';
+      return true;
+    }
+  } catch(e) {}
+  return false;
 }
 
 /* === CODE LINES FOR SCROLL BG === */
@@ -1037,41 +966,43 @@ for (var r = 0; r < 6; r++) { full += codeLines.join('\n') + '\n'; }
 document.getElementById('scroll-bg').textContent = full;
 
 /* === BOOT SEQUENCE === */
-var bootEl = document.getElementById('boot-lines');
-function addBootLine(html, delay, cb) {
-  setTimeout(function() {
-    var s = document.createElement('span'); s.className = 'boot-line'; s.innerHTML = html;
-    bootEl.appendChild(s); if (cb) cb();
-  }, delay);
-}
-function typeInto(el, text, speed, cb) {
-  var i = 0;
-  var iv = setInterval(function() {
-    el.innerHTML += text.charAt(i); i++;
-    if (i >= text.length) { clearInterval(iv); if (cb) setTimeout(cb, 150); }
-  }, speed);
-}
-function showAlert() {
-  var boot = document.getElementById('boot');
-  boot.style.transition = 'opacity 0.4s ease'; boot.style.opacity = '0';
-  setTimeout(function() {
-    boot.style.display = 'none';
-    var aw = document.getElementById('alert-wrap'); aw.style.display = 'block';
+if (!skipBootIfRecent()) {
+  var bootEl = document.getElementById('boot-lines');
+  var addBootLine = function(html, delay, cb) {
     setTimeout(function() {
-      aw.style.opacity = '1';
-      document.querySelector('.enter-btn').focus();
-    }, 30);
-  }, 400);
+      var s = document.createElement('span'); s.className = 'boot-line'; s.innerHTML = html;
+      bootEl.appendChild(s); if (cb) cb();
+    }, delay);
+  };
+  var typeInto = function(el, text, speed, cb) {
+    var i = 0;
+    var iv = setInterval(function() {
+      el.innerHTML += text.charAt(i); i++;
+      if (i >= text.length) { clearInterval(iv); if (cb) setTimeout(cb, 150); }
+    }, speed);
+  };
+  var showAlert = function() {
+    var boot = document.getElementById('boot');
+    boot.style.transition = 'opacity 0.4s ease'; boot.style.opacity = '0';
+    setTimeout(function() {
+      boot.style.display = 'none';
+      var aw = document.getElementById('alert-wrap'); aw.style.display = 'block';
+      setTimeout(function() {
+        aw.style.opacity = '1';
+        document.querySelector('.enter-btn').focus();
+      }, 30);
+    }, 400);
+  };
+  var t = 0;
+  addBootLine('<span class="dim">byaga.dev — boot sequence initiated</span>', t+=0);
+  addBootLine('<span class="dim">checking dependencies...</span>', t+=600);
+  addBootLine('<span class="dim">loading modules: analytics... dev... film...</span>', t+=700);
+  addBootLine('<span class="dim">running diagnostics...</span>', t+=700);
+  setTimeout(function() {
+    var last = document.createElement('span'); last.className = 'boot-line'; bootEl.appendChild(last);
+    typeInto(last, '3 issues found. review before continuing.', 35, function() { setTimeout(showAlert, 500); });
+  }, t+=600);
 }
-var t = 0;
-addBootLine('<span class="dim">byaga.dev — boot sequence initiated</span>', t+=0);
-addBootLine('<span class="dim">checking dependencies...</span>', t+=600);
-addBootLine('<span class="dim">loading modules: analytics... dev... film...</span>', t+=700);
-addBootLine('<span class="dim">running diagnostics...</span>', t+=700);
-setTimeout(function() {
-  var last = document.createElement('span'); last.className = 'boot-line'; bootEl.appendChild(last);
-  typeInto(last, '3 issues found. review before continuing.', 35, function() { setTimeout(showAlert, 500); });
-}, t+=600);
 
 /* === BREAKOUT GAME === */
 var gameRunning = false, gameStarted = false, animId = null;
@@ -1180,205 +1111,6 @@ function loop() {
   animId=requestAnimationFrame(loop);
 }
 
-/* === AUTO-FETCH FILM RANKINGS FROM BAYLEY FILM CLUB === */
-(function() {
-  var container = document.getElementById('film-rankings');
-
-  /* Fallback data in case fetch fails */
-  var fallbackFilms = [
-    { rank: 1, title: 'Dancer in the Dark', director: 'Lars von Trier', a: 5, e: 5, r: 5, total: 15 },
-    { rank: 2, title: 'The Pianist', director: 'Roman Polański', a: 4, e: 4, r: 5, total: 13 },
-    { rank: 3, title: 'There Will Be Blood', director: 'Paul Thomas Anderson', a: 4, e: 5, r: 4, total: 13 },
-    { rank: 4, title: 'Knife in the Water', director: 'Roman Polański', a: 5, e: 5, r: 3, total: 13 },
-    { rank: 5, title: 'Mother', director: 'Bong Joon-ho', a: 4, e: 4, r: 4, total: 12 },
-    { rank: 6, title: 'Tape', director: 'Richard Linklater', a: 3, e: 5, r: 4, total: 12 },
-    { rank: 7, title: 'Breaking the Waves', director: 'Lars von Trier', a: 2, e: 4, r: 5, total: 11 },
-    { rank: 8, title: 'Memories of Murder', director: 'Bong Joon-ho', a: 4, e: 4, r: 3, total: 11 },
-    { rank: 9, title: 'No Country for Old Men', director: 'Joel & Ethan Coen', a: 2, e: 4, r: 4, total: 10 },
-    { rank: 10, title: 'Phantom Thread', director: 'Paul Thomas Anderson', a: 3, e: 3, r: 4, total: 10 }
-  ];
-
-  function renderFilms(films) {
-    var html = '';
-    films.forEach(function(f, i) {
-      html += '<div class="row-item">'
-        + '<div style="display:flex; align-items:baseline; gap:10px; min-width:0;">'
-        + '<span class="dim" style="font-size:11px; min-width:18px;">' + f.rank + '</span>'
-        + '<div style="min-width:0;">'
-        + '<span class="w" style="font-size:13px; font-weight:300;">' + f.title + '</span>'
-        + '<span class="sec" style="font-size:11px; margin-left:8px;">' + f.director + '</span>'
-        + '</div>'
-        + '</div>'
-        + '<span class="sec" style="font-size:11px; white-space:nowrap; margin-left:12px;">'
-        + 'A\u00b7' + f.a + ' E\u00b7' + f.e + ' R\u00b7' + f.r
-        + ' &nbsp;<span class="g">' + f.total + '/15</span></span>'
-        + '</div>';
-    });
-    container.innerHTML = html;
-  }
-
-  /* Try to fetch live data from bayleyfilmclub.com */
-  fetch('https://bayleyfilmclub.com/rankings/films/')
-    .then(function(res) { return res.text(); })
-    .then(function(html) {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(html, 'text/html');
-      var rows = doc.querySelectorAll('.leaderboard-row');
-      if (!rows.length) throw new Error('No rows found');
-
-      var films = [];
-      rows.forEach(function(row, i) {
-        if (i >= 10) return;
-        var titleEl = row.querySelector('.film-title, h3, .title');
-        var directorEl = row.querySelector('.director-name, .director, .subtitle');
-        var scoreEls = row.querySelectorAll('.score-value, .rating-value');
-
-        /* Try to extract text content by structure */
-        var allText = row.textContent;
-
-        /* Parse the structured data from the row */
-        var rankNum = row.querySelector('.rank-num');
-        var rank = rankNum ? parseInt(rankNum.textContent) : (i + 1);
-
-        /* Find title - usually the largest/boldest text */
-        var title = '';
-        var director = '';
-        var a = 0, e = 0, r = 0, total = 0;
-
-        /* Try specific selectors first */
-        if (titleEl) title = titleEl.textContent.trim();
-        if (directorEl) director = directorEl.textContent.trim();
-
-        /* Parse A/E/R scores from text */
-        var scoreMatch = allText.match(/A:\s*(\d+)\s*E:\s*(\d+)\s*R:\s*(\d+)/);
-        if (scoreMatch) {
-          a = parseInt(scoreMatch[1]);
-          e = parseInt(scoreMatch[2]);
-          r = parseInt(scoreMatch[3]);
-          total = a + e + r;
-        }
-
-        /* Fallback: try to get total score */
-        if (!total) {
-          var totalMatch = allText.match(/(\d+)\s*\/\s*15/);
-          if (totalMatch) total = parseInt(totalMatch[1]);
-        }
-
-        if (title || director) {
-          films.push({ rank: rank, title: title, director: director, a: a, e: e, r: r, total: total });
-        }
-      });
-
-      if (films.length > 0) {
-        renderFilms(films);
-      } else {
-        renderFilms(fallbackFilms);
-      }
-    })
-    .catch(function() {
-      /* If fetch fails (CORS, network, etc.), use fallback */
-      renderFilms(fallbackFilms);
-    });
-})();
-
-/* === LIFE IN THE UK QUIZ === */
-var quizCurrent = 0;
-var quizTotal = 5;
-var quizScore = 0;
-var quizUsed = [];
-
-var fallbackCards = [
-  {cat:"Values",q:"What are the fundamental principles of British life?",options:["Democracy, rule of law, individual liberty, tolerance and respect","Monarchy, tradition, class structure and strong defence","Free market, private property, limited government, low taxation","Christianity, Parliament, common law and free press"],correct:0,hint:"Listed in the handbook as core British values"},
-  {cat:"Values",q:"What does the rule of law mean in the UK?",options:["Parliament can override court decisions at any time","Laws only apply to ordinary citizens, not ministers","Everyone \u2014 including the government \u2014 must obey the law","The monarch signs every law personally before it applies"],correct:2,hint:"A cornerstone of British democracy since Magna Carta"},
-  {cat:"Values",q:"What is tolerance and respect in British values?",options:["Respect for people of all faiths, backgrounds and beliefs \u2014 discrimination is illegal","Respecting authority and not questioning government decisions","Tolerating different political parties but not different religions","Respecting those who are British-born above all others"],correct:0,hint:"Protected by the Equality Act 2010"},
-  {cat:"History",q:"What is Magna Carta?",options:["A 1215 charter establishing that the king was subject to the rule of law","A 1066 peace treaty between William I and the English barons","A document granting women the right to vote in 1215","A list of rights granted by Parliament to the monarchy in 1689"],correct:0,hint:"\u2018Great Charter\u2019 in Latin \u2014 signed by King John"},
-  {cat:"History",q:"What was the Blitz?",options:["The British bombing of German cities in 1943\u201344","The German U-boat campaign against Atlantic shipping from 1940","The sustained German bombing of British cities from September 1940 to May 1941","The evacuation of British troops from Dunkirk in 1940"],correct:2,hint:"George VI and Queen Elizabeth stayed in London throughout"},
-  {cat:"History",q:"Who was the first female Prime Minister?",options:["Theresa May, elected in 2016","Barbara Castle, who served under Harold Wilson","Margaret Thatcher, elected 1979, served until 1990","Harriet Harman, who briefly led the Labour Party"],correct:2,hint:"Known as \u2018The Iron Lady\u2019"},
-  {cat:"Government",q:"What type of government does the UK have?",options:["A federal republic with an elected president","A constitutional monarchy and parliamentary democracy","A direct democracy where citizens vote on every law","An absolute monarchy where the King has final authority"],correct:1,hint:"The monarch is head of state; political power rests with elected Parliament"},
-  {cat:"Government",q:"What are the two Houses of Parliament?",options:["The Senate and the House of Representatives","The House of Commons and the House of Lords","The Lower House and the Upper Chamber","The National Assembly and the Senate"],correct:1,hint:"Parliament sits at the Palace of Westminster"},
-  {cat:"Society",q:"What are the four countries of the UK?",options:["England, Scotland, Wales and the Republic of Ireland","England, Scotland, Wales and Northern Ireland","Britain, Scotland, Wales and Ulster","England, Scotland, Wales and Eire"],correct:1,hint:"Great Britain = England, Scotland and Wales only"},
-  {cat:"Society",q:"What are the capitals of the UK nations?",options:["London, Glasgow, Swansea, Londonderry","London, Edinburgh, Cardiff, Belfast","London, Edinburgh, Cardiff, Dublin","London, Aberdeen, Cardiff, Belfast"],correct:1,hint:"Glasgow is Scotland\u2019s largest city but Edinburgh is the capital"},
-  {cat:"Citizenship",q:"What is the Life in the UK test?",options:["A test of English language skills required for a work visa","A test of knowledge about British history, culture and values \u2014 24 questions, 75% pass mark","A test required to become a British passport holder after 10 years","An interview with a Home Office official about British customs"],correct:1,hint:"18 out of 24 correct answers needed"},
-  {cat:"Citizenship",q:"What is jury service?",options:["An optional role for retired professionals to advise judges","A paid job for legal graduates working in Crown Courts","A civic duty requiring eligible adults (18\u201375) to determine the verdict in criminal trials","A voluntary role helping magistrates with paperwork in Magistrates\u2019 Courts"],correct:2,hint:"Can be fined for failing to attend without good reason"}
-];
-
-function startQuiz() {
-  quizCurrent = 0;
-  quizScore = 0;
-  quizUsed = [];
-  loadQuizQuestion();
-}
-
-function pickRandomCard() {
-  var cards = fallbackCards;
-  if (quizUsed.length >= cards.length) quizUsed = [];
-  var idx;
-  do { idx = Math.floor(Math.random() * cards.length); } while (quizUsed.indexOf(idx) !== -1);
-  quizUsed.push(idx);
-  return cards[idx];
-}
-
-function showQuizResults() {
-  var container = document.getElementById('quiz-container');
-  var pct = Math.round((quizScore / quizTotal) * 100);
-  var msg = pct >= 80 ? 'great job!' : pct >= 50 ? 'not bad — keep revising' : 'keep practising, you\'ll get there';
-  container.innerHTML = '<div class="quiz-score-summary">'
-    + '<div class="score-big">' + quizScore + '/' + quizTotal + '</div>'
-    + '<div class="score-label">' + msg + '</div>'
-    + '<button class="quiz-next" onclick="startQuiz()" style="margin-right:16px;">try again \u2192</button>'
-    + '<a href="https://lifeintheukflashcards.com/practice/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try the full app \u2192</a>'
-    + '</div>';
-}
-
-function loadQuizQuestion() {
-  quizCurrent++;
-  var card = pickRandomCard();
-  var container = document.getElementById('quiz-container');
-  var pctWidth = ((quizCurrent - 1) / quizTotal) * 100;
-  var html = '<div class="quiz-progress">'
-    + '<span>' + quizCurrent + '/' + quizTotal + '</span>'
-    + '<div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:' + pctWidth + '%"></div></div>'
-    + '<span>' + quizScore + ' correct</span>'
-    + '</div>'
-    + '<span class="quiz-category">' + card.cat + '</span>'
-    + '<p class="w" style="font-size:14px; font-weight:300; line-height:1.7; margin-bottom:16px;">' + card.q + '</p>'
-    + '<div id="quiz-options">';
-  card.options.forEach(function(opt, i) {
-    html += '<button class="quiz-option" data-index="' + i + '" data-correct="' + card.correct + '">' + opt + '</button>';
-  });
-  var isLast = quizCurrent >= quizTotal;
-  html += '</div>'
-    + '<div id="quiz-feedback" style="display:none;">'
-    + '<p class="quiz-hint">' + card.hint + '</p>'
-    + '<div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:14px;">'
-    + (isLast
-      ? '<button class="quiz-next" onclick="showQuizResults()">see results \u2192</button>'
-      : '<button class="quiz-next" onclick="loadQuizQuestion()">next question \u2192</button>')
-    + '<a href="https://lifeintheukflashcards.com/practice/" target="_blank" rel="noopener noreferrer" class="link-arrow link-subtle" style="margin-top:0;">try the full app \u2192</a>'
-    + '</div></div>';
-  container.innerHTML = html;
-
-  container.querySelectorAll('.quiz-option').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var idx = parseInt(btn.dataset.index);
-      var correct = parseInt(btn.dataset.correct);
-      container.querySelectorAll('.quiz-option').forEach(function(b) { b.disabled = true; });
-      if (idx === correct) {
-        btn.classList.add('correct');
-        quizScore++;
-      } else {
-        btn.classList.add('wrong');
-        container.querySelectorAll('.quiz-option')[correct].classList.add('correct');
-      }
-      var fill = container.querySelector('.quiz-progress-fill');
-      fill.style.width = (quizCurrent / quizTotal * 100) + '%';
-      container.querySelector('.quiz-progress').lastElementChild.textContent = quizScore + ' correct';
-      document.getElementById('quiz-feedback').style.display = 'block';
-    });
-  });
-}
-
-startQuiz();
 </script>
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ceed9440c665487bac5f44dea8318a6f"}'></script>
 </body>
