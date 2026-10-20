@@ -1,5 +1,12 @@
 [
   {
+    "slug": "golden-record-consulting",
+    "title": "I Started a Company. It's Called Golden Record.",
+    "date": "20 October 2026",
+    "excerpt": "A contract fell through. The company I set up for it didn't.",
+    "url": "/blog/golden-record-consulting/"
+  },
+  {
     "slug": "earbind-from-annoyance-to-live-product",
     "title": "I Got Annoyed at an Audiobook and Built Earbind",
     "date": "15 September 2026",

@@ -6,6 +6,16 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://byaga.dev/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://byaga.dev/llms.txt</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://byaga.dev/projects/earbind/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -46,6 +56,12 @@
   <url>
     <loc>https://byaga.dev/blog/earbind-from-annoyance-to-live-product/</loc>
     <lastmod>2026-09-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://byaga.dev/blog/golden-record-consulting/</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

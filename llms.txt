@@ -1,0 +1,24 @@
+# byaga.dev — Aga Drapinska-Tonge
+
+> Aga Drapinska-Tonge is a data analytics engineer and developer based in England, and the founder of Golden Record Consulting (https://goldenrecordconsulting.com) — helping subscription businesses define, build, and reconcile their revenue metrics (MRR, ARR, churn, retention). She also ships independent iOS apps, a season-based film criticism site, and writes a build-in-public blog called Works in Progress.
+
+Site: https://byaga.dev
+
+## Projects
+- [earbind](https://byaga.dev/projects/earbind/) — An audiobook, as a page instead of a file. Audio, full transcript, real chapters, and a search that jumps to the exact word — no app, no account, nothing to install.
+- [elbow](https://byaga.dev/projects/elbow/) — A home-cleaning app for iOS: room-by-room routines, appliance care, stain rescue, and household sharing. Private by design — your data stays in your own iCloud, never on my servers. Live on the App Store.
+- [bayley film club](https://byaga.dev/projects/film/) — A season-based film criticism site — each season spotlights one director, handpicked films, full written reviews, and a custom 3-tier rating system (Anticipation · Enjoyment · Retrospect).
+- [life in the uk: flashcards](https://byaga.dev/projects/liuk/) — A comprehensive revision tool for the Life in the UK citizenship test — the one I used and passed. Multiple choice questions, monarch family tree, historical timelines, notable Britons, and UK law diagrams. Free on the web and on the App Store for iOS.
+
+## Blog posts
+- [I Started a Company. It's Called Golden Record.](https://byaga.dev/blog/golden-record-consulting/) — 20 October 2026 — A contract fell through. The company I set up for it didn't.
+- [I Got Annoyed at an Audiobook and Built Earbind](https://byaga.dev/blog/earbind-from-annoyance-to-live-product/) — 15 September 2026 — Two weekends from a Dropbox file I couldn't navigate to a live product with a real author using it.
+- [elbow Is Live. Then the Part I Couldn't Test Broke.](https://byaga.dev/blog/elbow-is-live-and-the-part-i-couldnt-test/) — 14 September 2026 — Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can't check.
+- [elbow Got Rejected. Here's Exactly Why.](https://byaga.dev/blog/elbow-app-store-rejection/) — 11 August 2026 — I had a feeling it wouldn't pass on the first try. Three small, avoidable mistakes — and what I'm doing differently on round two.
+- [Works in Progress](https://byaga.dev/blog/works-in-progress/) — 2 August 2026 — I got made redundant — turns out I manifested this.
+
+## Links
+- [Golden Record Consulting](https://goldenrecordconsulting.com) — her consultancy for subscription revenue metrics
+- [LinkedIn](https://www.linkedin.com/in/agnieszkadrapinska/)
+- [GitHub](https://github.com/agadrap)
+- [Instagram](https://instagram.com/agalogue)

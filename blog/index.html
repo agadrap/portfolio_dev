@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Works in Progress | byaga.dev</title>
+<meta name="description" content="Works in Progress — build-in-public blog by Aga Drapinska-Tonge. Essays on shipping apps, running a consultancy, and making things.">
+<meta name="author" content="Aga Drapinska-Tonge">
+<meta name="theme-color" content="#040806">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Works in Progress | byaga.dev">
+<meta property="og:description" content="Build-in-public notes from Aga Drapinska-Tonge.">
+<meta property="og:url" content="https://byaga.dev/blog/">
+<meta property="og:site_name" content="byaga.dev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@dr_agniieszka">
+
+<link rel="canonical" href="https://byaga.dev/blog/">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #040806; min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { width: 100%; max-width: 700px; }
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px; padding-bottom: 16px; border-bottom: 0.5px solid #1a2e22;
+  }
+  .site-nav-logo { color: #4af2a1; font-size: 13px; font-weight: 500; text-decoration: none; }
+  .site-nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .site-nav-links a { color: #7a8a80; font-size: 12px; text-decoration: none; transition: color 0.2s; }
+  .site-nav-links a:hover { color: #4af2a1; }
+  .prompt { color: #3a6b52; font-size: 11px; margin-bottom: 20px; letter-spacing: 0.1em; }
+  h1 { color: #4af2a1; font-size: 20px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .intro { color: #d4d4c8; font-size: 13px; font-weight: 300; margin-bottom: 28px; line-height: 1.7; }
+  .intro a { color: #4af2a1; text-decoration: none; }
+  .intro a:hover { text-decoration: underline; }
+
+  .post-list { list-style: none; padding: 0; margin: 0; }
+  .post-item {
+    display: block; padding: 16px 0;
+    border-bottom: 0.5px solid #111c15;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .post-item:last-child { border-bottom: none; }
+  .post-item:hover h2 { color: #4af2a1; }
+  .post-meta { color: #7a8a80; font-size: 11px; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .post-item h2 {
+    color: #d4d4c8; font-size: 14px; font-weight: 500;
+    margin-bottom: 6px; line-height: 1.4;
+    transition: color 0.2s;
+  }
+  .post-sub { color: #7a8a80; font-size: 12px; font-weight: 300; line-height: 1.6; }
+  .read-arrow {
+    display: inline-block; margin-top: 8px;
+    color: #4af2a1; font-size: 11px; opacity: 0.7;
+  }
+  .post-item:hover .read-arrow { opacity: 1; }
+
+  hr { border: none; border-top: 0.5px solid #1a2e22; margin: 28px 0; }
+
+  .signup-box {
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    padding: 16px 18px; margin-top: 32px;
+  }
+  .signup-label { color: #3a6b52; font-size: 10px; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .signup-form { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .signup-form input[type="email"] {
+    flex: 1 1 220px;
+    background: #040806; border: 0.5px solid #1a2e22; border-radius: 3px;
+    color: #d4d4c8; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 10px; outline: none;
+  }
+  .signup-form input[type="email"]::placeholder { color: #3a6b52; }
+  .signup-form input[type="email"]:focus { border-color: #4af2a1; }
+  .signup-form button {
+    background: transparent; border: 0.5px solid #4af2a1; border-radius: 3px;
+    color: #4af2a1; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 8px 14px; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .signup-form button:hover { background: #4af2a1; color: #040806; }
+  .signup-note { color: #7a8a80; font-size: 11px; margin: 0; }
+
+  .footer-statusbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d1310; border: 0.5px solid #1a2e22; border-radius: 4px;
+    margin-top: 36px; padding: 10px 16px; font-size: 10.5px; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .footer-statusbar a { color: #7a8a80; text-decoration: none; }
+  .footer-statusbar a:hover { color: #4af2a1; }
+  .cursor-blink {
+    display: inline-block; width: 6px; height: 12px; background: #4af2a1;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/" class="site-nav-logo">~/byaga.dev</a>
+    <div class="site-nav-links">
+      <a href="/#projects">projects</a>
+      <a href="/blog/">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
+    </div>
+  </nav>
+
+  <p class="prompt" aria-hidden="true">$ ls blog/</p>
+  <h1>Works in Progress</h1>
+  <p class="intro">Build-in-public notes from <a href="/">Aga Drapinska-Tonge</a> — shipping apps, running <a href="https://goldenrecordconsulting.com">Golden Record Consulting</a>, and making things that fit between.</p>
+
+  <ul class="post-list">
+    <li>
+      <a class="post-item" href="/blog/golden-record-consulting/">
+        <p class="post-meta">20 October 2026</p>
+        <h2>I Started a Company. It&#39;s Called Golden Record.</h2>
+        <p class="post-sub">A contract fell through. The company I set up for it didn&#39;t.</p>
+        <span class="read-arrow">read →</span>
+      </a>
+    </li>
+    <li>
+      <a class="post-item" href="/blog/earbind-from-annoyance-to-live-product/">
+        <p class="post-meta">15 September 2026</p>
+        <h2>I Got Annoyed at an Audiobook and Built Earbind</h2>
+        <p class="post-sub">Two weekends from a Dropbox file I couldn&#39;t navigate to a live product with a real author using it.</p>
+        <span class="read-arrow">read →</span>
+      </a>
+    </li>
+    <li>
+      <a class="post-item" href="/blog/elbow-is-live-and-the-part-i-couldnt-test/">
+        <p class="post-meta">14 September 2026</p>
+        <h2>elbow Is Live. Then the Part I Couldn&#39;t Test Broke.</h2>
+        <p class="post-sub">Round two went through. Then the paid feature failed in the wild — and it turned out to be the one thing a simulator can&#39;t check.</p>
+        <span class="read-arrow">read →</span>
+      </a>
+    </li>
+    <li>
+      <a class="post-item" href="/blog/elbow-app-store-rejection/">
+        <p class="post-meta">11 August 2026</p>
+        <h2>elbow Got Rejected. Here&#39;s Exactly Why.</h2>
+        <p class="post-sub">I had a feeling it wouldn&#39;t pass on the first try. Three small, avoidable mistakes — and what I&#39;m doing differently on round two.</p>
+        <span class="read-arrow">read →</span>
+      </a>
+    </li>
+    <li>
+      <a class="post-item" href="/blog/works-in-progress/">
+        <p class="post-meta">2 August 2026</p>
+        <h2>Works in Progress</h2>
+        <p class="post-sub">I got made redundant — turns out I manifested this.</p>
+        <span class="read-arrow">read →</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="signup-box">
+    <p class="signup-label">// subscribe</p>
+    <form action="https://app.kit.com/forms/9759126/subscriptions" method="post" class="signup-form">
+      <input type="email" name="email_address" placeholder="you@example.com" aria-label="Email address" required>
+      <button type="submit">subscribe →</button>
+    </form>
+    <p class="signup-note">Occasional build-in-public updates. Unsubscribe anytime.</p>
+  </div>
+
+  <hr>
+  <div class="footer-statusbar">
+    <span style="color:#4af2a1;">[byaga.dev]</span>
+    <span style="display:flex; gap:12px; color:#7a8a80;">
+      <a href="https://github.com/agadrap" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://www.linkedin.com/in/agnieszkadrapinska/" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://x.com/dr_agniieszka" target="_blank" rel="noopener noreferrer">x</a>
+      <a href="https://instagram.com/agalogue" target="_blank" rel="noopener noreferrer">instagram</a>
+      <a href="https://www.youtube.com/@agalogue" target="_blank" rel="noopener noreferrer">youtube</a>
+    </span>
+    <span style="color:#7a8a80; display:flex; align-items:center; gap:6px;">© 2026 Aga Drapinska-Tonge · all rights reserved <span class="cursor-blink"></span></span>
+  </div>
+</div>
+</body>
+</html>
