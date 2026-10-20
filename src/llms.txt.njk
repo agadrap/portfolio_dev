@@ -1,0 +1,25 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# byaga.dev — Aga Drapinska-Tonge
+
+> Aga Drapinska-Tonge is a data analytics engineer and developer based in England, and the founder of Golden Record Consulting (https://goldenrecordconsulting.com) — helping subscription businesses define, build, and reconcile their revenue metrics (MRR, ARR, churn, retention). She also ships independent iOS apps, a season-based film criticism site, and writes a build-in-public blog called Works in Progress.
+
+Site: https://byaga.dev
+
+## Projects
+{%- for project in collections.project %}
+- [{{ project.data.title | safe }}](https://byaga.dev{{ project.url }}){% if project.data.tagline %} — {{ project.data.tagline | safe }}{% endif %}
+{%- endfor %}
+
+## Blog posts
+{%- for post in collections.post | reverse %}
+- [{{ post.data.title | safe }}](https://byaga.dev{{ post.url }}) — {{ post.data.dateDisplay }}{% if post.data.subtitle %} — {{ post.data.subtitle | safe }}{% endif %}
+{%- endfor %}
+
+## Links
+- [Golden Record Consulting](https://goldenrecordconsulting.com) — her consultancy for subscription revenue metrics
+- [LinkedIn](https://www.linkedin.com/in/agnieszkadrapinska/)
+- [GitHub](https://github.com/agadrap)
+- [Instagram](https://instagram.com/agalogue)

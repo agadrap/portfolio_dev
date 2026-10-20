@@ -22,6 +22,7 @@
 <meta name="twitter:creator" content="@dr_agniieszka">
 
 <link rel="canonical" href="https://byaga.dev/">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 
 <!-- Structured data -->
 <script type="application/ld+json">
@@ -30,8 +31,14 @@
   "@type": "Person",
   "name": "Aga Drapinska-Tonge",
   "url": "https://byaga.dev",
-  "jobTitle": "Data analytics engineer & developer",
+  "jobTitle": "Founder, Golden Record Consulting · data analytics engineer & developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Golden Record Consulting Limited",
+    "url": "https://goldenrecordconsulting.com"
+  },
   "sameAs": [
+    "https://goldenrecordconsulting.com",
     "https://bayleyfilmclub.com",
     "https://lifeintheukflashcards.com",
     "https://earbind.com",
@@ -374,6 +381,40 @@
   }
   .footer-statusbar a { color: #7a8a80; text-decoration: none; transition: color 0.2s; }
   .footer-statusbar a:hover { color: #4af2a1; }
+
+  /* === MILESTONE === */
+  .milestone {
+    margin: 24px 0 8px;
+    padding: 14px 16px;
+    border-left: 2px solid #d1ae55;
+    background: rgba(209, 174, 85, 0.04);
+    border-radius: 0 3px 3px 0;
+  }
+  .milestone-cmd {
+    color: #3a6b52; font-size: 11px; letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .milestone-headline {
+    font-size: 13px; line-height: 1.6; margin-bottom: 4px;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
+  }
+  .milestone-star { color: #d1ae55; font-size: 14px; }
+  .milestone-date { color: #7a8a80; font-size: 11px; }
+  .milestone-text { color: #d4d4c8; }
+  .milestone-brand { color: #d1ae55; }
+  .milestone-sub {
+    color: #7a8a80; font-size: 12px; line-height: 1.6;
+    margin: 2px 0 10px 22px;
+  }
+  .milestone-links {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-left: 22px;
+  }
+  .milestone-links a { margin-top: 0; }
+  @media (max-width: 600px) {
+    .milestone { padding: 12px 14px; }
+    .milestone-sub, .milestone-links { margin-left: 18px; }
+  }
   .cursor-blink {
     display: inline-block; width: 6px; height: 12px; background: #4af2a1;
     animation: blink 1s steps(1) infinite;
@@ -415,6 +456,37 @@
 <a href="#main-body" class="skip-link">Skip to content</a>
 
 <div class="site" role="main">
+
+  <!-- NOSCRIPT / CRAWLER FALLBACK -->
+  <noscript>
+    <div style="background:#080f0b; padding:28px; border-radius:8px; font-family:'JetBrains Mono', monospace; color:#d4d4c8; line-height:1.8;">
+      <h1 style="color:#4af2a1; font-size:20px; font-weight:500; margin-bottom:8px;">Aga Drapinska-Tonge — byaga.dev</h1>
+      <p style="color:#7a8a80; font-size:13px; margin-bottom:20px;">Data analytics engineer, developer, and founder of <a href="https://goldenrecordconsulting.com" style="color:#d1ae55;">Golden Record Consulting</a>.</p>
+      <p style="color:#3a6b52; font-size:11px; letter-spacing:0.1em; margin-bottom:8px;">// projects</p>
+      <ul style="list-style:none; padding:0; margin:0 0 20px;">
+        <li><a href="/projects/earbind/" style="color:#4af2a1;">earbind</a> — audiobooks as pages, with transcript and word-level search.</li>
+        <li><a href="/projects/elbow/" style="color:#4af2a1;">elbow</a> — home-cleaning iOS app.</li>
+        <li><a href="/projects/liuk/" style="color:#4af2a1;">life in the uk: flashcards</a> — citizenship test revision, web and iOS.</li>
+        <li><a href="/projects/film/" style="color:#4af2a1;">bayley film club</a> — season-based film criticism.</li>
+      </ul>
+      <p style="color:#3a6b52; font-size:11px; letter-spacing:0.1em; margin-bottom:8px;">// blog — works in progress</p>
+      <p style="margin-bottom:8px;"><a href="/blog/" style="color:#4af2a1;">All posts →</a></p>
+      <ul style="list-style:none; padding:0; margin:0 0 20px;">
+        <li><a href="/blog/golden-record-consulting/" style="color:#4af2a1;">I Started a Company. It's Called Golden Record.</a></li>
+        <li><a href="/blog/earbind-from-annoyance-to-live-product/" style="color:#4af2a1;">I Got Annoyed at an Audiobook and Built Earbind</a></li>
+        <li><a href="/blog/elbow-is-live-and-the-part-i-couldnt-test/" style="color:#4af2a1;">elbow Is Live. Then the Part I Couldn't Test Broke.</a></li>
+        <li><a href="/blog/elbow-app-store-rejection/" style="color:#4af2a1;">elbow Got Rejected. Here's Exactly Why.</a></li>
+        <li><a href="/blog/works-in-progress/" style="color:#4af2a1;">Works in Progress</a></li>
+      </ul>
+      <p style="color:#3a6b52; font-size:11px; letter-spacing:0.1em; margin-bottom:8px;">// elsewhere</p>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="https://goldenrecordconsulting.com" style="color:#4af2a1;">Golden Record Consulting</a></li>
+        <li><a href="https://www.linkedin.com/in/agnieszkadrapinska/" style="color:#4af2a1;">LinkedIn</a></li>
+        <li><a href="https://github.com/agadrap" style="color:#4af2a1;">GitHub</a></li>
+        <li><a href="https://instagram.com/agalogue" style="color:#4af2a1;">Instagram</a></li>
+      </ul>
+    </div>
+  </noscript>
 
   <!-- BOOT -->
   <div id="boot" aria-live="polite"><div id="boot-lines"></div></div>
@@ -471,6 +543,18 @@
             <p class="dim" style="font-size:12px; margin-bottom:8px;" aria-hidden="true">$ whoami</p>
             <h1 class="w" style="font-size:22px; font-weight:300; letter-spacing:-0.02em;">Aga Drapinska-Tonge</h1>
             <p class="sec" style="font-size:13px; margin-top:6px;">data analytics engineer · developer · film reviewer</p>
+          </div>
+        </div>
+        <div class="milestone" role="note" aria-label="Latest milestone">
+          <p class="milestone-cmd" aria-hidden="true">$ git log --milestones -1</p>
+          <p class="milestone-headline">
+            <span class="milestone-star" aria-hidden="true">★</span>
+            <span><span class="milestone-date">13 Oct 2026</span> <span class="milestone-text">— launched <span class="milestone-brand">Golden Record Consulting</span></span></span>
+          </p>
+          <p class="milestone-sub">revenue metrics for subscription businesses</p>
+          <div class="milestone-links">
+            <a href="https://goldenrecordconsulting.com" target="_blank" rel="noopener noreferrer" class="link-arrow">goldenrecordconsulting.com →</a>
+            <a href="/blog/golden-record-consulting/" class="link-arrow link-subtle">read the post →</a>
           </div>
         </div>
         <hr class="divider">
@@ -568,7 +652,19 @@
 
       <!-- PROJECTS -->
       <section class="page" id="page-projects" aria-label="Projects">
-        <p class="dim" style="font-size:11px; margin-bottom:24px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
+        <p class="dim" style="font-size:11px; margin-bottom:16px; letter-spacing:0.1em;" aria-hidden="true">$ ls projects/</p>
+        <div class="milestone" role="note" aria-label="Latest milestone" style="margin-bottom:24px;">
+          <p class="milestone-cmd" aria-hidden="true">$ git log --milestones -1</p>
+          <p class="milestone-headline">
+            <span class="milestone-star" aria-hidden="true">★</span>
+            <span><span class="milestone-date">13 Oct 2026</span> <span class="milestone-text">— launched <span class="milestone-brand">Golden Record Consulting</span></span></span>
+          </p>
+          <p class="milestone-sub">revenue metrics for subscription businesses</p>
+          <div class="milestone-links">
+            <a href="https://goldenrecordconsulting.com" target="_blank" rel="noopener noreferrer" class="link-arrow">goldenrecordconsulting.com →</a>
+            <a href="/blog/golden-record-consulting/" class="link-arrow link-subtle">read the post →</a>
+          </div>
+        </div>
         <div style="margin-bottom:14px;">
           <span class="badge badge-active">live</span>
           <div class="card featured" data-project-href="/projects/earbind/" onclick="projectCardClick(event, this)" onkeydown="if(event.key==='Enter') location.href = this.dataset.projectHref;" role="link" tabindex="0" style="cursor:pointer;">
@@ -668,6 +764,8 @@
           <img id="about-photo" src="assets/photo.jpg" alt="Aga Drapinska-Tonge" style="width:120px; height:120px; border-radius:4px; border:0.5px solid #1e3d2a; object-fit:cover; object-position:center 20%; flex-shrink:0;">
           <div class="w" style="font-size:13px; font-weight:300; line-height:1.9; max-width:520px; flex:1; min-width:240px;">
             <p>I'm Aga — a data analytics engineer and developer based in England.</p>
+            <br>
+            <p>I'm also the founder of <a href="https://goldenrecordconsulting.com" target="_blank" rel="noopener noreferrer" style="color:#d1ae55; text-decoration:none; border-bottom:0.5px solid rgba(209,174,85,0.4);">Golden Record Consulting</a> — helping subscription businesses get their revenue numbers straight.</p>
             <br>
             <p>I make things across different worlds: data pipelines, web apps, film reviews, and a project I'm not ready to talk about yet.</p>
             <br>
