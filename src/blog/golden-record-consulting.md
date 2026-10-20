@@ -5,6 +5,7 @@ title: "I Started a Company. It's Called Golden Record."
 subtitle: "A contract fell through. The company I set up for it didn't."
 date: 2026-10-20
 dateDisplay: "20 October 2026"
+ogHighlight: "Golden Record."
 ---
 A couple of months ago a consulting contract came up. To take it on properly I set up a limited company, sorted the admin, and wrote a draft of the contract. Then it fell through — the client decided to do the work internally. Which happens.
 
